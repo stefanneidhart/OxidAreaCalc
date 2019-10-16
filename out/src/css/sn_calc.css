@@ -1,0 +1,37 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 26.04.2017, 23:05:22
+    Author     : neidini
+*/
+
+.PreisKalkulationContainer {
+
+    padding: 30px 0;
+    display: block;
+
+
+}
+
+.PreisKalkulationContainer .itemrow{
+    display: block;
+    padding-bottom: 15px;
+}
+
+.PreisKalkulationContainer .itemrow:after{
+    content: '';
+    clear: both;
+    float: none;
+    display: block;
+
+}
+
+
+.PreisKalkulationContainer .itemrow label{
+    width: 130px;
+    display: block;
+    float: left;
+}
