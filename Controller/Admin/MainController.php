@@ -73,7 +73,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	}
 
 	public function add_type() {
-		$oDb = oxDb::getDb();
+		$oDb = $this->db;
 		$aParams = oxConfig::getParameter("typeval");
 		$uid = oxUtilsObject::getInstance()->generateUID();
 		$aid = $this->getEditObjectId();
@@ -85,7 +85,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 
 	public function delete_type() {
 		$delid = oxConfig::getParameter("voxid");
-		$oDb = oxDb::getDb();
+		$oDb = $this->db;
 		$sQ = "DELETE FROM areacalc_typen WHERE CONVERT(`areacalc_typen`.`areacalctypeid` USING utf8) = " . $oDb->quote($delid) . " ";
 		$oDb->execute($sQ);
 		
@@ -94,7 +94,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	}
 
 	public function save_types() {
-		$oDb = oxDb::getDb();
+		$oDb = $this->db;
 		$aParams = oxConfig::getParameter("typevalsave");
 		
 		foreach ($aParams AS $areacalctypeid => $itemvalues) {
@@ -111,7 +111,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	}
 
 	public function get_types() {
-		$oDb = oxDb::getDb();
+		$oDb = $this->db;
 		$aid = $this->getEditObjectId();
 
 		$sQ = "SELECT * FROM areacalc_typen WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY title ASC";
@@ -126,7 +126,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	}
 
 	public function add_staffel() {
-		$oDb = oxDb::getDb();
+		$oDb = $this->db;
 		$aParams = oxConfig::getParameter("staffelval");
 
 		$aid = $this->getEditObjectId();
@@ -142,7 +142,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	}
 
 	public function add_staffel_type($type_id) {
-		$oDb = oxDb::getDb();
+		$oDb = $this->db;
 		$aParams = oxConfig::getParameter("staffelval");
 
 		$aid = $this->getEditObjectId();
@@ -157,7 +157,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	}
 
 	public function get_staffeln() {
-		$oDb = oxDb::getDb();
+		$oDb = $this->db;
 		$aid = $this->getEditObjectId();
 		$sQ = "SELECT DISTINCT staffel FROM areacalc_typen_staffel WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY staffel ASC";
 		$aData = oxDb::getDb(oxDb::FETCH_MODE_ASSOC)->getAll($sQ);
@@ -165,7 +165,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	}
 
 	public function get_staffeln_types($typeid) {
-		$oDb = oxDb::getDb();
+		$oDb = $this->db;
 		$aid = $this->getEditObjectId();
 		$sQ = "SELECT * FROM areacalc_typen_staffel WHERE areacalctypeid = " . $oDb->quote($typeid) . " and oxidarticleid = " . $oDb->quote($aid) . " ORDER BY staffel ASC";
 		$aData = oxDb::getDb(oxDb::FETCH_MODE_ASSOC)->getAll($sQ);
@@ -177,7 +177,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 		foreach ($aParams as $typeitem => $staffeln) {
 
 			foreach ($staffeln AS $staffel => $staffelpreis) {
-				$oDb = oxDb::getDb();
+				$oDb = $this->db;
 
 				$sQ = 'UPDATE areacalc_typen_staffel '
 						. 'SET preis = ' . $oDb->quote($staffelpreis) . ' '
@@ -193,7 +193,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 		$delstaffel = oxConfig::getParameter("voxid");
 		$aid = $this->getEditObjectId();
 
-		$oDb = oxDb::getDb();
+		$oDb = $this->db;
 		$sQ = "DELETE FROM areacalc_typen_staffel WHERE staffel = " . $oDb->quote($delstaffel) . " AND CONVERT(`areacalc_typen_staffel`.`oxidarticleid` USING utf8) = " . $oDb->quote($aid) . " ";
 		$oDb->execute($sQ);
 	}
