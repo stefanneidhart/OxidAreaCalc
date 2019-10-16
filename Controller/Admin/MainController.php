@@ -13,6 +13,10 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	protected $_oArticle = null;
 	protected $_sThisTemplate = 'article_calcsn.tpl';
 
+    public function __construct() {
+	$this->db = \OxidEsales\Eshop\Core\DatabaseProvider::getDb($blAssoc);
+    }
+	
 	public function render() {
 
 		$myConfig = $this->getConfig();
