@@ -3,6 +3,7 @@
  * @TODO LICENCE
  */
 namespace sn\oxid6AreacalcModule\Controller\Admin;
+use stdClass; 
 
 /**
  * Class LinslinSliderMain.
@@ -35,8 +36,8 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 			}
 
 			foreach ($oOtherLang as $id => $language) {
-				//$oLang = new stdClass();
-				$oLang = oxUBase();
+				$oLang = new stdClass();
+				
 				$oLang->sLangDesc = $language;
 				$oLang->selected = ($id == $this->_iEditLang);
 				$this->_aViewData["otherlang"][$id] = clone $oLang;
