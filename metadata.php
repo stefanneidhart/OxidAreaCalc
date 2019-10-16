@@ -28,8 +28,8 @@ $aModule = array(
     'email'       => 'info@stefanneidhart.de',
     'extend'      => array(
     ),
-    'controllers'       => array( 
-        'maincontrollerareacalc' => \sn\oxid6-areacalc-module\Controller\Admin\MainController::class,
+    'controllers'       => array(  
+        'maincontrollerareacalc' => \sn\oxid6AreacalcModule\Controller\Admin\MainController::class,
     ),
     'files'       => array(),
     'templates'   => array(
