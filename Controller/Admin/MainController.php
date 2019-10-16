@@ -35,7 +35,8 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 			}
 
 			foreach ($oOtherLang as $id => $language) {
-				$oLang = new stdClass();
+				//$oLang = new stdClass();
+				$oLang = oxNew();
 				$oLang->sLangDesc = $language;
 				$oLang->selected = ($id == $this->_iEditLang);
 				$this->_aViewData["otherlang"][$id] = clone $oLang;
