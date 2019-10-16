@@ -20,6 +20,8 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
     public function getDB($blAssoc = true) {
 	return \OxidEsales\Eshop\Core\DatabaseProvider::getDb($blAssoc);
     }
+    
+    
 	
 	public function render() {
 
@@ -69,7 +71,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 			}
 		}
 
-		//	$aData = oxDb::getDb( oxDb::FETCH_MODE_ASSOC )->getAll( $sSql );
+		//	$aData = oxDb::getDb( oxDb::FETCH_MODE_ASSOC )->fetchAll( $sSql );
 		$this->_aViewData['calctypes'] = $this->get_types();
 		$this->_aViewData['staffelungen'] = $this->get_staffeln();
 
@@ -120,7 +122,9 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 
 		$sQ = "SELECT * FROM areacalc_typen WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY title ASC";
 		$oDb->execute($sQ);
-		$aData = oxDb::getDb(oxDb::FETCH_MODE_ASSOC)->getAll($sQ);
+		$aData = oxDb::getDb(oxDb::FETCH_MODE_ASSOC)->fetchAll($sQ);
+		
+		//PDOStatement::fetchAll()
 
 		foreach ($aData as $key => $typeitem) {
 
@@ -164,7 +168,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 		$oDb = $this->getDB();
 		$aid = $this->getEditObjectId();
 		$sQ = "SELECT DISTINCT staffel FROM areacalc_typen_staffel WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY staffel ASC";
-		$aData = oxDb::getDb(oxDb::FETCH_MODE_ASSOC)->getAll($sQ);
+		$aData = oxDb::getDb(oxDb::FETCH_MODE_ASSOC)->fetchAll($sQ);
 		return $aData;
 	}
 
@@ -172,7 +176,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 		$oDb = $this->getDB();
 		$aid = $this->getEditObjectId();
 		$sQ = "SELECT * FROM areacalc_typen_staffel WHERE areacalctypeid = " . $oDb->quote($typeid) . " and oxidarticleid = " . $oDb->quote($aid) . " ORDER BY staffel ASC";
-		$aData = oxDb::getDb(oxDb::FETCH_MODE_ASSOC)->getAll($sQ);
+		$aData = oxDb::getDb(oxDb::FETCH_MODE_ASSOC)->fetchAll($sQ);
 		return $aData;
 	}
 
