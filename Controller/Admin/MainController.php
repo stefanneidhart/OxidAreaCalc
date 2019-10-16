@@ -21,7 +21,11 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	return \OxidEsales\Eshop\Core\DatabaseProvider::getDb($blAssoc);
     }
     
+    public function render() {
+	return "article_calcsn.tpl";
+    }
     
+    /*
 	
 	public function render() {
 
@@ -77,7 +81,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 
 		return "article_calcsn.tpl";
 	}
-
+*/
 	public function add_type() {
 		$oDb = $this->getDB();
 		$aParams = oxConfig::getParameter("typeval");
