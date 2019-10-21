@@ -41,7 +41,7 @@ $aModule = array(
     ),  
     'files'       => array(),
     'templates'   => array(
-        'main.tpl' => 'sn/oxid6-areacalc-module/views/admin/main.tpl',
+        'article_calcsn.tpl' => 'sn/oxid6-areacalc-module/views/admin/article_calcsn.tpl',
 	'ajaxareacalc.tpl' => 'areacalc2/out/tpl/page/details/inc/ajaxareacalc.tpl',
     ),
     'blocks'      => array(
