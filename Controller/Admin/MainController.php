@@ -25,77 +25,83 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	return \OxidEsales\Eshop\Core\DatabaseProvider::getDb($blAssoc);
     }
 
-    /*  */
+    /*
+
+      public function render() {
+
+      try {
+      $oDb = $this->getDB();
+
+      var_dump($oDb->getAll('SELECT * FROM areacalc_typen WHERE oxidarticleid'));
+
+
+      } catch (Exception $exception) {
+      throw $exception;
+      }
+      return "article_calcsn.tpl";
+      }
+     */
+    /* 	 */
 
     public function render() {
 
 	try {
-	    $oDb = $this->getDB();
-	    
-	     var_dump($oDb->getAll('SELECT * FROM areacalc_typen WHERE oxidarticleid'));
-	    
-	    var_dump($oDb);
+
+	    $myConfig = $this->getConfig();
+
+	    parent::render();
+
+	    $this->_aViewData["edit"] = $oArticle = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);
+	    ;
+
+	    $soxId = $this->getEditObjectId();
+
+	    if ($soxId != "-1" && isset($soxId)) {
+
+
+		// load object
+		$oArticle->loadInLang($this->_iEditLang, $soxId);
+		// load object in other languages
+		$oOtherLang = $oArticle->getAvailableInLangs();
+		if (!isset($oOtherLang[$this->_iEditLang])) {
+		    // echo "language entry doesn't exist! using: ".key($oOtherLang);
+		    $oArticle->loadInLang(key($oOtherLang), $soxId);
+		}
+
+		foreach ($oOtherLang as $id => $language) {
+		    $oLang = new stdClass();
+
+		    $oLang->sLangDesc = $language;
+		    $oLang->selected = ($id == $this->_iEditLang);
+		    $this->_aViewData["otherlang"][$id] = clone $oLang;
+		}
+
+
+		// variant handling
+		if ($oArticle->oxarticles__oxparentid->value) {
+		    $oParentArticle = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);
+		    ;
+		    $oParentArticle->load($oArticle->oxarticles__oxparentid->value);
+		    $this->_aViewData["parentarticle"] = $oParentArticle;
+		    $this->_aViewData["oxparentid"] = $oArticle->oxarticles__oxparentid->value;
+		}
+
+		if ($myConfig->getConfigParam('blMallInterchangeArticles')) {
+		    $sShopSelect = '1';
+		} else {
+		    $sShopID = $myConfig->getShopID();
+		    $sShopSelect = " oxshopid =  '$sShopID' ";
+		}
+	    }
+
+	    //	$aData = oxDb::getDb( oxDb::FETCH_MODE_ASSOC )->fetchAll( $sSql );
+	    $this->_aViewData['calctypes'] = $this->get_types();
+	    $this->_aViewData['staffelungen'] = $this->get_staffeln();
 	} catch (Exception $exception) {
 	    throw $exception;
 	}
 	return "article_calcsn.tpl";
     }
-
-    /* 	
-      public function render() {
-
-      $myConfig = $this->getConfig();
-
-      parent::render();
-
-      $this->_aViewData["edit"] = $oArticle = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);;
-
-      $soxId = $this->getEditObjectId();
-
-      if ($soxId != "-1" && isset($soxId)) {
-
-
-      // load object
-      $oArticle->loadInLang($this->_iEditLang, $soxId);
-      // load object in other languages
-      $oOtherLang = $oArticle->getAvailableInLangs();
-      if (!isset($oOtherLang[$this->_iEditLang])) {
-      // echo "language entry doesn't exist! using: ".key($oOtherLang);
-      $oArticle->loadInLang(key($oOtherLang), $soxId);
-      }
-
-      foreach ($oOtherLang as $id => $language) {
-      $oLang = new stdClass();
-
-      $oLang->sLangDesc = $language;
-      $oLang->selected = ($id == $this->_iEditLang);
-      $this->_aViewData["otherlang"][$id] = clone $oLang;
-      }
-
-
-      // variant handling
-      if ($oArticle->oxarticles__oxparentid->value) {
-      $oParentArticle = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);;
-      $oParentArticle->load($oArticle->oxarticles__oxparentid->value);
-      $this->_aViewData["parentarticle"] = $oParentArticle;
-      $this->_aViewData["oxparentid"] = $oArticle->oxarticles__oxparentid->value;
-      }
-
-      if ($myConfig->getConfigParam('blMallInterchangeArticles')) {
-      $sShopSelect = '1';
-      }
-      else {
-      $sShopID = $myConfig->getShopID();
-      $sShopSelect = " oxshopid =  '$sShopID' ";
-      }
-      }
-
-      //	$aData = oxDb::getDb( oxDb::FETCH_MODE_ASSOC )->fetchAll( $sSql );
-      $this->_aViewData['calctypes'] = $this->get_types();
-      $this->_aViewData['staffelungen'] = $this->get_staffeln();
-
-      return "article_calcsn.tpl";
-      } */
 
     public function add_type() {
 	$oDb = $this->getDB();
@@ -140,10 +146,12 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	$aid = $this->getEditObjectId();
 
 	$sQ = "SELECT * FROM areacalc_typen WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY title ASC";
-	$oDb->execute($sQ);
-	$aData = $oDb->fetchAll($sQ);
+	//$oDb->execute($sQ);
+	//$aData = $oDb->fetchAll($sQ);
+	
+	$aData = $oDb->getAll($sQ);
+	
 
-	//PDOStatement::fetchAll()
 
 	foreach ($aData as $key => $typeitem) {
 
@@ -187,7 +195,12 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	$oDb = $this->getDB();
 	$aid = $this->getEditObjectId();
 	$sQ = "SELECT DISTINCT staffel FROM areacalc_typen_staffel WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY staffel ASC";
-	$aData = $oDb->fetchAll($sQ);
+	//$aData = $oDb->fetchAll($sQ);
+	
+	$aData = $oDb->getAll($sQ);
+	
+	
+	
 	return $aData;
     }
 
