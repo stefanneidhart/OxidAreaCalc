@@ -169,7 +169,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 
 	$sQ = "SELECT * FROM areacalc_typen WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY title ASC";
 	//$oDb->execute($sQ);
-	//$aData = $oDb->fetchAll($sQ);
+	//$aData = $oDb->getAll($sQ);
 
 	$aData = $oDb->getAll($sQ);
 
@@ -229,7 +229,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	$oDb = $this->getDB();
 	$aid = $this->getEditObjectId();
 	$sQ = "SELECT DISTINCT staffel FROM areacalc_typen_staffel WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY staffel ASC";
-	//$aData = $oDb->fetchAll($sQ);
+	//$aData = $oDb->getAll($sQ);
 
 
 	$aData = $oDb->getAll($sQ);
@@ -243,7 +243,8 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	$aid = $this->getEditObjectId();
 	$sQ = "SELECT * FROM areacalc_typen_staffel WHERE areacalctypeid = " . $oDb->quote($typeid) . " and oxidarticleid = " . $oDb->quote($aid) . " ORDER BY staffel ASC";
 	//$aData = oxDb::getDb(oxDb::FETCH_MODE_ASSOC)->fetchAll($sQ);
-	$aData = $oDb->fetchAll($sQ);
+	$aData = $oDb->getAll($sQ);
+
 	return $aData;
     }
 
