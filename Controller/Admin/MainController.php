@@ -24,7 +24,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
     /*  */
     public function render() {
 	
-	$this->get_types();
+	var_dump($this->get_types());
 	
 	return "article_calcsn.tpl";
     }
