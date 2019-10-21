@@ -6,8 +6,12 @@
 
 namespace sn\oxid6AreacalcModule\Controller\Admin;
 
-use stdClass;
+use oxRegistry;
 use oxDb;
+use oxField;
+use stdClass;
+use Exception;
+
 
 /**
  * Class LinslinSliderMain.
@@ -105,7 +109,10 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 
     public function add_type() {
 	$oDb = $this->getDB();
-	$aParams = oxConfig::getParameter("typeval");
+	//$aParams = oxConfig::getParameter("typeval");
+	
+	$aParams = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("typeval");
+	
 	$uid = oxUtilsObject::getInstance()->generateUID();
 	$aid = $this->getEditObjectId();
 	//$sQ = "INSERT INTO areacalc_typen (areacalctypeid, oxidarticleid, title, title2, hoehe_min, hoehe_max, gewicht ) VALUES (" . $oDb->quote($uid) . ", " . $oDb->quote($aid) . ", " . $oDb->quote($aParams['title']) . " , " . $oDb->quote($aParams['desc']) . ", " . $oDb->quote($aParams['hoehe_min']) . " , " . $oDb->quote($aParams['hoehe_max']) . ", " . $oDb->quote($aParams['gewicht']) . ")";
