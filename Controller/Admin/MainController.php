@@ -136,6 +136,8 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	$aParams = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("typevalsave");
 
 	foreach ($aParams AS $areacalctypeid => $itemvalues) {
+	    
+	    var_dump($itemvalues);
 
 	    $sQ = 'UPDATE areacalc_typen '
 		    . 'SET title = ' . $oDb->quote($itemvalues['title']) . ', '
@@ -143,7 +145,8 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 		    . 'hoehe_min = ' . $oDb->quote($itemvalues['hoehe_min']) . ', '
 		    . 'hoehe_max = ' . $oDb->quote($itemvalues['hoehe_max']) . ', '
 		    . 'gewicht = ' . $oDb->quote($itemvalues['gewicht']) . ' '
-		    . 'WHERE CONVERT(`areacalc_typen`.`areacalctypeid` USING utf8) = ' . $oDb->quote($areacalctypeid);
+		    . 'WHERE OXID = ' . $oDb->quote($areacalctypeid);
+	    var_dump($sQ);
 	    $oDb->execute($sQ);
 	}
     }
@@ -157,6 +160,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	//$aData = $oDb->getAll($sQ);
 
 	$aData = $oDb->getAll($sQ);
+	var_dump($aData);
 
 
 
@@ -275,7 +279,13 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	$oArticle = $this->_aViewData['edit'];
 
 // shopid
-	$sShopID = oxSession::getVar("actshop");
+	
+	$myConfig = $this->getConfig();
+	
+	
+	//$sShopID = oxSession::getVar("actshop");
+	$sShopID = $myConfig->getShopID();
+	
 	$aParams['oxarticles__oxshopid'] = $sShopID;
 
 	$oArticle = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);

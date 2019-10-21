@@ -147,19 +147,19 @@
 					[{assign var="_cnt1" value=$_cnt1+1}]
 					<tr id="type_row.[{$_cnt1}]">
 						<td class="[{ $listclass}]">
-							<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="typevalsave[[{$typeitem.areacalctypeid}]][title]" value="[{$typeitem.title}]"  [{ $readonly }]>
+							<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="typevalsave[[{$typeitem.OXID}]][title]" value="[{$typeitem.title}]"  [{ $readonly }]>
 						</td>
 						<td class="[{ $listclass}]">
-							<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="typevalsave[[{$typeitem.areacalctypeid}]][title2]" value="[{$typeitem.title2}]"  [{ $readonly }]>
+							<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="typevalsave[[{$typeitem.OXID}]][title2]" value="[{$typeitem.title2}]"  [{ $readonly }]>
 						</td>
 						<td class="[{ $listclass}]">
-							<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="typevalsave[[{$typeitem.areacalctypeid}]][hoehe_min]" value="[{$typeitem.hoehe_min}]"  [{ $readonly }]>
+							<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="typevalsave[[{$typeitem.OXID}]][hoehe_min]" value="[{$typeitem.hoehe_min}]"  [{ $readonly }]>
 						</td>	
 						<td class="[{ $listclass}]">
-							<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="typevalsave[[{$typeitem.areacalctypeid}]][hoehe_max]" value="[{$typeitem.hoehe_max}]" [{ $readonly }]>
+							<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="typevalsave[[{$typeitem.OXID}]][hoehe_max]" value="[{$typeitem.hoehe_max}]" [{ $readonly }]>
 						</td>	
 						<td class="[{ $listclass}]">
-							<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="typevalsave[[{$typeitem.areacalctypeid}]][gewicht]" value="[{$typeitem.gewicht}]"  [{ $readonly }]>
+							<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="typevalsave[[{$typeitem.OXID}]][gewicht]" value="[{$typeitem.gewicht}]"  [{ $readonly }]>
 						</td>					
 						<td class="[{ $listclass}]">
 							<a href="Javascript:deleteThis('[{$typeitem.areacalctypeid}]');" class="delete"></a>
