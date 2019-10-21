@@ -24,27 +24,9 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	
     }
 
-    public function getDB($blAssoc = true) {
-	return \OxidEsales\Eshop\Core\DatabaseProvider::getDb($blAssoc);
+    public function getDB() {
+	return \OxidEsales\Eshop\Core\DatabaseProvider::getDb(\OxidEsales\Eshop\Core\DatabaseProvider::FETCH_MODE_ASSOC);
     }
-
-    /*
-
-      public function render() {
-
-      try {
-      $oDb = $this->getDB();
-
-      var_dump($oDb->getAll('SELECT * FROM areacalc_typen WHERE oxidarticleid'));
-
-
-      } catch (Exception $exception) {
-      throw $exception;
-      }
-      return "article_calcsn.tpl";
-      }
-     */
-    /* 	 */
 
     public function render() {
 
@@ -112,7 +94,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 
     public function add_type() {
 	$oDb = $this->getDB();
-	//$aParams = oxConfig::getParameter("typeval");
+
 
 	$aParams = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("typeval");
 
@@ -137,7 +119,9 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
     }
 
     public function delete_type() {
-	$delid = oxConfig::getParameter("voxid");
+	
+	$delid = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("voxid");
+	
 	$oDb = $this->getDB();
 	$sQ = "DELETE FROM areacalc_typen WHERE CONVERT(`areacalc_typen`.`areacalctypeid` USING utf8) = " . $oDb->quote($delid) . " ";
 	$oDb->execute($sQ);
@@ -148,7 +132,8 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 
     public function save_types() {
 	$oDb = $this->getDB();
-	$aParams = oxConfig::getParameter("typevalsave");
+	
+	$aParams = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("typevalsave");
 
 	foreach ($aParams AS $areacalctypeid => $itemvalues) {
 
@@ -200,7 +185,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 
     public function add_staffel_type($type_id) {
 	$oDb = $this->getDB();
-	//$aParams = oxConfig::getParameter("staffelval");
+	
 	$aParams = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("staffelval");
 
 	$aid = $this->getEditObjectId();
@@ -249,7 +234,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
     }
 
     public function save_staffeln() {
-	$aParams = oxConfig::getParameter("staffelungen");
+	$aParams = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("staffelungen");
 	foreach ($aParams as $typeitem => $staffeln) {
 
 	    foreach ($staffeln AS $staffel => $staffelpreis) {
@@ -266,7 +251,8 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
     }
 
     public function delete_staffel() {
-	$delstaffel = oxConfig::getParameter("voxid");
+	$delstaffel = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("voxid");
+
 	$aid = $this->getEditObjectId();
 
 	$oDb = $this->getDB();
@@ -278,7 +264,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	parent::save();
 
 	$soxId = $this->getEditObjectId();
-	$aParams = oxConfig::getParameter("editval");
+	$aParams = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("editval");
 
 	if (!isset($aParams['oxarticles__oxcalctest'])) {
 
@@ -293,7 +279,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	$aParams['oxarticles__oxshopid'] = $sShopID;
 
 	$oArticle = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);
-	;
+	
 	$oArticle->loadInLang($this->_iEditLang, $soxId);
 
 	$oArticle->setLanguage(0);
