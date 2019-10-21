@@ -113,7 +113,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	
 	$aParams = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("typeval");
 	
-	$uid = oxUtilsObject::getInstance()->generateUID();
+	$uid = \OxidEsales\Eshop\Core\Registry::getUtilsObject()->generateUID();
 	$aid = $this->getEditObjectId();
 	//$sQ = "INSERT INTO areacalc_typen (areacalctypeid, oxidarticleid, title, title2, hoehe_min, hoehe_max, gewicht ) VALUES (" . $oDb->quote($uid) . ", " . $oDb->quote($aid) . ", " . $oDb->quote($aParams['title']) . " , " . $oDb->quote($aParams['desc']) . ", " . $oDb->quote($aParams['hoehe_min']) . " , " . $oDb->quote($aParams['hoehe_max']) . ", " . $oDb->quote($aParams['gewicht']) . ")";
 	//$oDb->execute($sQ);
