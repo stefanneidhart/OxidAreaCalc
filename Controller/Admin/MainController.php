@@ -115,15 +115,15 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 		//$aData = $oDb->getAll($sQ);
 	$oNew = oxNew(\OxidEsales\EshopCommunity\Core\Model\BaseModel::class);
 	$oNew->init('areacalc_typen');
-	$oNew->areacalc_typen__oxid = new \OxidEsales\Eshop\Core\Field($oDb->quote($uid));
-	$oNew->areacalc_typen__areacalctypeid = new \OxidEsales\Eshop\Core\Field($oDb->quote($uid));
+	$oNew->areacalc_typen__oxid = new \OxidEsales\Eshop\Core\Field($uid);
+	$oNew->areacalc_typen__areacalctypeid = new \OxidEsales\Eshop\Core\Field($uid);
 	$oNew->areacalc_typen__oxidarticleid = new \OxidEsales\Eshop\Core\Field($oDb->quote($aid));
 	$oNew->areacalc_typen__title = new \OxidEsales\Eshop\Core\Field($oDb->quote($aParams['title']));
 	$oNew->areacalc_typen__title2 = new \OxidEsales\Eshop\Core\Field($oDb->quote($aParams['desc']));
 	$oNew->areacalc_typen__hoehe_min = new \OxidEsales\Eshop\Core\Field($oDb->quote($aParams['hoehe_min']));
 	$oNew->areacalc_typen__hoehe_max = new \OxidEsales\Eshop\Core\Field($oDb->quote($aParams['hoehe_max']));
 	$oNew->areacalc_typen__gewicht = new \OxidEsales\Eshop\Core\Field($oDb->quote($aParams['gewicht']));
-	
+	$oNew->save();
 
 	//$this->add_staffel_type($uid);
     }

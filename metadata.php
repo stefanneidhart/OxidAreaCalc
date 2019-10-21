@@ -34,16 +34,11 @@ $aModule = array(
 	'basket' => 'areacalc2/application/models/sn_calcarea_basket',
 	'order' => 'areacalc2/application/models/sn_calcarea_order',
 	'oxviewconfig' => 'areacalc2/application/models/sn_calcarea_oxviewconfig',
-	'oxBasket' => 'areacalc2/application/models/sn_areacalc_oxBasket',
-	//'oxbase' => \sn\oxid6AreacalcModule\application\models\areacalc_typen::class,
-	
+	'oxBasket' => 'areacalc2/application/models/sn_areacalc_oxBasket',	
     ),
     'controllers'       => array(  
         'maincontrollerareacalc' => \sn\oxid6AreacalcModule\Controller\Admin\MainController::class,
-    ),
-    'models'       => array(  
-        'areacalc_typen' => \sn\oxid6AreacalcModule\application\models\areacalc_typen::class,
-    ),    
+    ),  
     'files'       => array(),
     'templates'   => array(
         'main.tpl' => 'sn/oxid6-areacalc-module/views/admin/main.tpl',
