@@ -4,6 +4,7 @@
  */
 namespace sn\oxid6AreacalcModule\Controller\Admin;
 use stdClass; 
+use oxDb;
 
 /**
  * Class LinslinSliderMain.
@@ -20,13 +21,16 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
     public function getDB($blAssoc = true) {
 	return \OxidEsales\Eshop\Core\DatabaseProvider::getDb($blAssoc);
     }
-    
+    /*  
     public function render() {
+	
+	$this->get_types();
+	
 	return "article_calcsn.tpl";
     }
     
-    /*
-	
+  
+	*/
 	public function render() {
 
 		$myConfig = $this->getConfig();
@@ -81,7 +85,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 
 		return "article_calcsn.tpl";
 	}
-*/
+
 	public function add_type() {
 		$oDb = $this->getDB();
 		$aParams = oxConfig::getParameter("typeval");
