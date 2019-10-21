@@ -108,10 +108,24 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	$aParams = oxConfig::getParameter("typeval");
 	$uid = oxUtilsObject::getInstance()->generateUID();
 	$aid = $this->getEditObjectId();
-	$sQ = "INSERT INTO areacalc_typen (areacalctypeid, oxidarticleid, title, title2, hoehe_min, hoehe_max, gewicht ) VALUES (" . $oDb->quote($uid) . ", " . $oDb->quote($aid) . ", " . $oDb->quote($aParams['title']) . " , " . $oDb->quote($aParams['desc']) . ", " . $oDb->quote($aParams['hoehe_min']) . " , " . $oDb->quote($aParams['hoehe_max']) . ", " . $oDb->quote($aParams['gewicht']) . ")";
-	$oDb->execute($sQ);
+	//$sQ = "INSERT INTO areacalc_typen (areacalctypeid, oxidarticleid, title, title2, hoehe_min, hoehe_max, gewicht ) VALUES (" . $oDb->quote($uid) . ", " . $oDb->quote($aid) . ", " . $oDb->quote($aParams['title']) . " , " . $oDb->quote($aParams['desc']) . ", " . $oDb->quote($aParams['hoehe_min']) . " , " . $oDb->quote($aParams['hoehe_max']) . ", " . $oDb->quote($aParams['gewicht']) . ")";
+	//$oDb->execute($sQ);
+	
+	
+		//$aData = $oDb->getAll($sQ);
+	$oNew = oxNew(\OxidEsales\EshopCommunity\Core\Model\BaseModel::class);
+	$oNew->init('areacalc_typen');
+	$oNew->areacalc_typen__oxid = new \OxidEsales\Eshop\Core\Field($oDb->quote($uid));
+	$oNew->areacalc_typen__areacalctypeid = new \OxidEsales\Eshop\Core\Field($oDb->quote($uid));
+	$oNew->areacalc_typen__oxidarticleid = new \OxidEsales\Eshop\Core\Field($oDb->quote($aid));
+	$oNew->areacalc_typen__title = new \OxidEsales\Eshop\Core\Field($oDb->quote($aParams['title']));
+	$oNew->areacalc_typen__title2 = new \OxidEsales\Eshop\Core\Field($oDb->quote($aParams['desc']));
+	$oNew->areacalc_typen__hoehe_min = new \OxidEsales\Eshop\Core\Field($oDb->quote($aParams['hoehe_min']));
+	$oNew->areacalc_typen__hoehe_max = new \OxidEsales\Eshop\Core\Field($oDb->quote($aParams['hoehe_max']));
+	$oNew->areacalc_typen__gewicht = new \OxidEsales\Eshop\Core\Field($oDb->quote($aParams['gewicht']));
+	
 
-	$this->add_staffel_type($uid);
+	//$this->add_staffel_type($uid);
     }
 
     public function delete_type() {
@@ -148,9 +162,9 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	$sQ = "SELECT * FROM areacalc_typen WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY title ASC";
 	//$oDb->execute($sQ);
 	//$aData = $oDb->fetchAll($sQ);
-	
+
 	$aData = $oDb->getAll($sQ);
-	
+
 
 
 	foreach ($aData as $key => $typeitem) {
@@ -196,18 +210,10 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	$aid = $this->getEditObjectId();
 	$sQ = "SELECT DISTINCT staffel FROM areacalc_typen_staffel WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY staffel ASC";
 	//$aData = $oDb->fetchAll($sQ);
-	
-	$aData = $oDb->getAll($sQ);	//\OxidEsales\Eshop\Core\Model\BaseModel
-			    $oNew = oxNew(\OxidEsales\Eshop\Application\Model\areacalc_typen::class);
-	                    $oNew->areacalc_typen__title = new \OxidEsales\Eshop\Core\Field('title');
-			    $oNew->areacalc_typen__title2 = new \OxidEsales\Eshop\Core\Field('title2');
-			    $oNew->areacalc_typen__hoehe_min = new \OxidEsales\Eshop\Core\Field('hoehe_min');
-			    $oNew->areacalc_typen__hoehe_max = new \OxidEsales\Eshop\Core\Field('hoehe_max');
-			    $oNew->areacalc_typen__gewicht = new \OxidEsales\Eshop\Core\Field('gewicht');
 
-                    $oNew->save();
-	
-	
+	$oNew->save();
+
+
 	return $aData;
     }
 
