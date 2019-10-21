@@ -61,7 +61,7 @@
 <form name="transfer" id="transfer" action="[{ $oViewConf->getSelfLink() }]" method="post">
     [{$oViewConf->getHiddenSid()}]
     <input type="hidden" name="oxid" value="[{ $oxid }]">
-    <input type="hidden" name="cl" value="article_calcsn">
+    <input type="hidden" name="cl" value="maincontrollerareacalc">
     <input type="hidden" name="fnc" value="">
     <input type="hidden" name="voxid" value="[{ $oxid }]">
     <input type="hidden" name="editlanguage" value="[{ $editlanguage }]">
@@ -71,7 +71,7 @@
 <form name="myedit" id="myedit" action="[{ $oViewConf->getSelfLink() }]" method="post">
 
     [{ $oViewConf->getHiddenSid() }]
-    <input type="hidden" name="cl" value="article_calcsn">
+    <input type="hidden" name="cl" value="maincontrollerareacalc">
     <input type="hidden" name="fnc" value="save">
     <input type="hidden" name="oxid" value="[{ $oxid }]">
     <input type="hidden" name="voxid" value="[{ $oxid }]">
@@ -116,7 +116,7 @@
 			<table>
 				<form name="myedit1" id="myedit1" action="[{ $oViewConf->getSelfLink() }]" method="post">
 					[{ $oViewConf->getHiddenSid() }]
-					<input type="hidden" name="cl" value="article_calcsn">
+					<input type="hidden" name="cl" value="maincontrollerareacalc">
 					<input type="hidden" name="fnc" value="save_types">
 					<input type="hidden" name="oxid" value="[{ $oxid }]">
 					<input type="hidden" name="voxid" value="[{ $oxid }]">
@@ -181,7 +181,7 @@
 
 			<form name="myedit2" id="myedit2" action="[{ $oViewConf->getSelfLink() }]" method="post">
 				[{ $oViewConf->getHiddenSid() }]
-				<input type="hidden" name="cl" value="article_calcsn">
+				<input type="hidden" name="cl" value="maincontrollerareacalc">
 				<input type="hidden" name="fnc" value="add_type">
 				<input type="hidden" name="oxid" value="[{ $oxid }]">
 				<input type="hidden" name="voxid" value="[{ $oxid }]">
@@ -236,7 +236,7 @@
 			<form name="myeditstaffel" id="myeditstaffel" action="[{ $oViewConf->getSelfLink() }]" method="post">
 
 				[{ $oViewConf->getHiddenSid() }]
-				<input type="hidden" name="cl" value="article_calcsn">
+				<input type="hidden" name="cl" value="maincontrollerareacalc">
 				<input type="hidden" name="fnc" value="save_staffeln">
 				<input type="hidden" name="oxid" value="[{ $oxid }]">
 				<input type="hidden" name="voxid" value="[{ $oxid }]">
@@ -293,7 +293,7 @@
 			<form name="myedit2" id="myedit3" action="[{ $oViewConf->getSelfLink() }]" method="post">
 
 				[{ $oViewConf->getHiddenSid() }]
-				<input type="hidden" name="cl" value="article_calcsn">
+				<input type="hidden" name="cl" value="maincontrollerareacalc">
 				<input type="hidden" name="fnc" value="add_staffel">
 				<input type="hidden" name="oxid" value="[{ $oxid }]">
 				<input type="hidden" name="voxid" value="[{ $oxid }]">
