@@ -197,8 +197,8 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	$sQ = "SELECT DISTINCT staffel FROM areacalc_typen_staffel WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY staffel ASC";
 	//$aData = $oDb->fetchAll($sQ);
 	
-	$aData = $oDb->getAll($sQ);
-	
+	$aData = $oDb->getAll($sQ);	//\OxidEsales\Eshop\Core\Model\BaseModel
+			    $oNew = oxNew(\OxidEsales\Eshop\Application\Model\areacalc_typen::class);
 	                    $oNew->areacalc_typen__title = new \OxidEsales\Eshop\Core\Field('title');
 			    $oNew->areacalc_typen__title2 = new \OxidEsales\Eshop\Core\Field('title2');
 			    $oNew->areacalc_typen__hoehe_min = new \OxidEsales\Eshop\Core\Field('hoehe_min');
