@@ -211,7 +211,8 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	$sQ = "SELECT DISTINCT staffel FROM areacalc_typen_staffel WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY staffel ASC";
 	//$aData = $oDb->fetchAll($sQ);
 
-	$oNew->save();
+	
+	$aData = $oDb->getAll($sQ);
 
 
 	return $aData;
