@@ -199,7 +199,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	
 	$aData = $oDb->getAll($sQ);
 	
-	                    $oNew->areacalc_typen__title = new \OxidEsales\Eshop\Core\Field('neuneu');
+	                    $oNew->areacalc_typen__title = new \OxidEsales\Eshop\Core\Field('title');
 			    $oNew->areacalc_typen__title2 = new \OxidEsales\Eshop\Core\Field('title2');
 			    $oNew->areacalc_typen__hoehe_min = new \OxidEsales\Eshop\Core\Field('hoehe_min');
 			    $oNew->areacalc_typen__hoehe_max = new \OxidEsales\Eshop\Core\Field('hoehe_max');
