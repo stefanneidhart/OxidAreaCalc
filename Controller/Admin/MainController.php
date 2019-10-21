@@ -23,8 +23,8 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
     }
     /*  */
     public function render() {
-	
-	var_dump($this->get_types());
+	$oDb = $this->getDB();
+	var_dump($oDb);
 	
 	return "article_calcsn.tpl";
     }
