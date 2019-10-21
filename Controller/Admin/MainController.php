@@ -37,7 +37,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 
 		parent::render();
 
-		$this->_aViewData["edit"] = $oArticle = oxNew("oxarticle");
+		$this->_aViewData["edit"] = $oArticle = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);;
 
 		$soxId = $this->getEditObjectId();
 
@@ -64,7 +64,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 
 // variant handling
 			if ($oArticle->oxarticles__oxparentid->value) {
-				$oParentArticle = oxNew("oxarticle");
+				$oParentArticle = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);;
 				$oParentArticle->load($oArticle->oxarticles__oxparentid->value);
 				$this->_aViewData["parentarticle"] = $oParentArticle;
 				$this->_aViewData["oxparentid"] = $oArticle->oxarticles__oxparentid->value;
@@ -233,7 +233,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 		$sShopID = oxSession::getVar("actshop");
 		$aParams['oxarticles__oxshopid'] = $sShopID;
 
-		$oArticle = oxNew("oxarticle");
+		$oArticle = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);;
 		$oArticle->loadInLang($this->_iEditLang, $soxId);
 
 		$oArticle->setLanguage(0);
