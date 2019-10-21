@@ -22,7 +22,7 @@ $aModule = array(
         'en' => '<h2>OXID6 Flächenberechung mit Staffelpreis</h2>',
     ),
     'thumbnail'   => '',
-    'version'     => '1.0.0',
+    'version'     => '1.0.1',
     'author'      => 'Stefan Neidhart',
     'url'         => 'https://www.stefanneidhart.de',
     'email'       => 'info@stefanneidhart.de',
@@ -41,7 +41,7 @@ $aModule = array(
     ),  
     'files'       => array(),
     'templates'   => array(
-        'article_calcsn.tpl' => 'sn/oxid6-areacalc-module/views/admin/article_calcsn.tpl',
+        'articlecalcsn.tpl' => 'sn/oxid6-areacalc-module/views/admin/articlecalcsn.tpl',
 	'ajaxareacalc.tpl' => 'areacalc2/out/tpl/page/details/inc/ajaxareacalc.tpl',
     ),
     'blocks'      => array(

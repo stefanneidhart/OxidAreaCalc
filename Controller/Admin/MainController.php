@@ -15,7 +15,7 @@ use oxDb;
 class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\AdminDetailsController {
 
     protected $_oArticle = null;
-    protected $_sThisTemplate = 'article_calcsn.tpl';
+    protected $_sThisTemplate = 'articlecalcsn.tpl';
 
     public function __construct() {
 	
@@ -100,7 +100,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	} catch (Exception $exception) {
 	    throw $exception;
 	}
-	return "article_calcsn.tpl";
+	return $this->_sThisTemplate;
     }
 
     public function add_type() {
