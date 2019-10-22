@@ -22,7 +22,7 @@ $aModule = array(
         'en' => '<h2>OXID6 Flächenberechung mit Staffelpreis</h2>',
     ),
     'thumbnail'   => '',
-    'version'     => '1.0.2',
+    'version'     => '1.0.3',
     'author'      => 'Stefan Neidhart',
     'url'         => 'https://www.stefanneidhart.de',
     'email'       => 'info@stefanneidhart.de',
@@ -36,15 +36,13 @@ $aModule = array(
 	'oxviewconfig' => 'oxid6-areacalc-module/application/models/sn_calcarea_oxviewconfig',
 	'oxBasket' => 'oxid6-areacalc-module/application/models/sn_areacalc_oxBasket',	*/
 	
-		'oxarticle' => \sn\oxid6AreacalcModule\Controller\Admin\sn_areacalc_oxarticle::class,
-	'oxbasketitem' => \sn\oxid6AreacalcModule\Controller\Admin\sn_calcarea_oxbasketitem::class,
-	'oxorderarticle' => \sn\oxid6AreacalcModule\Controller\Admin\sn_calcarea_oxorderarticle::class,
-	'basket' => \sn\oxid6AreacalcModule\Controller\Admin\sn_calcarea_basket::class,
-	'order' => \sn\oxid6AreacalcModule\Controller\Admin\sn_calcarea_order::class,
-	'oxviewconfig' => \sn\oxid6AreacalcModule\Controller\Admin\sn_calcarea_oxviewconfig::class,
-	'oxBasket' => \sn\oxid6AreacalcModule\Controller\Admin\sn_areacalc_oxBasket::class,
-	
-	
+	\OxidEsales\Eshop\Core\ViewConfig::class => \sn\oxid6AreacalcModule\Core\ViewConfig::class,
+
+	\OxidEsales\Eshop\Application\Model\Article::class  => \sn\oxid6AreacalcModule\Model\Article::class,
+	\OxidEsales\Eshop\Application\Model\Basket::class  => \sn\oxid6AreacalcModule\Model\Basket::class,
+	\OxidEsales\Eshop\Application\Model\BasketItem::class  => \sn\oxid6AreacalcModule\Model\BasketItem::class,
+	\OxidEsales\Eshop\Application\Model\OrderArticle::class  => \sn\oxid6AreacalcModule\Model\OrderArticle::class,
+		
     ),
     'controllers'       => array(  
         'maincontrollerareacalc' => \sn\oxid6AreacalcModule\Controller\Admin\MainController::class,

@@ -1,6 +1,7 @@
 <?php
+namespace sn\oxid6AreacalcModule\Model;
 
-class sn_calcarea_oxbasketitem extends sn_calcarea_oxbasketitem_parent {
+class BasketItem extends BasketItem_parent {
 
     public function getMaterial($materialid) {
 	return $this->_oArticle->get_type($materialid);

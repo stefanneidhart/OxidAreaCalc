@@ -1,6 +1,7 @@
 <?php
+namespace sn\oxid6AreacalcModule\Model;
 
-class sn_calcarea_oxorderarticle extends sn_calcarea_oxorderarticle_parent {
+class OrderArticle extends OrderArticle_parent {
 
     public function getPrice($dAmount = 1) {
 	parent::getPrice($dAmount = 1);

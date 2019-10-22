@@ -4,7 +4,10 @@
   Best practice: yournameabbr_modulename_origclassname extends [yourclassname]_parent.
   Instantiate your new class: */
 
-class sn_calcarea_oxviewconfig extends sn_calcarea_oxviewconfig_parent {
+namespace sn\oxid6AreacalcModule\Model;
+
+class ViewConfig extends ViewConfig_parent
+{
 
 
 

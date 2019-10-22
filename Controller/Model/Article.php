@@ -1,6 +1,9 @@
 <?php
 
-class sn_areacalc_oxarticle extends sn_areacalc_oxarticle_parent {
+namespace sn\oxid6AreacalcModule\Model;
+
+class Article extends Article_parent 
+{
 
     
         public function getDB() {

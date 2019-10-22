@@ -1,12 +1,8 @@
 <?php
-
 namespace sn\oxid6AreacalcModule\Model;
-/**
- * Description of sn_areacalc_oxBasket
- *
- * @author neidini
- */
-class Basket extends Basket_parent {
+
+class Basket extends Basket_parent
+{
 
     public function addToBasket($sProductID, $dAmount, $aSel = null, $aPersParam = null, $blOverride = false, $blBundle = false, $sOldBasketItemId = null) {
 	// enabled ?
