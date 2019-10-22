@@ -48,14 +48,15 @@ class Article extends Article_parent {
 
 	foreach ($aData as $key => $typeitem) {
 
-	    $aData[$key]['staffeln'] = $this->get_staffeln_types($typeitem['areacalctypeid']);
+	    $aData[$key]['staffeln'] = $this->get_staffeln_types($typeitem['OXID']);
 	}
 	return $aData;
     }
 
     public function get_staffeln() {
+
 	$oDb = $this->getDB();
-	$aid = $this->getId();
+	$aid = $this->getEditObjectId();
 	$sQ = "SELECT DISTINCT staffel FROM areacalc_typen_staffel WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY staffel ASC";
 	$aData = $oDb->getAll($sQ);
 	return $aData;

@@ -15,6 +15,8 @@ var CalcHandler = function (CalcTypes)
 		var myself = this;
 
 		var jsonOBJ = $.parseJSON(this.jsonrawdata);
+		
+		 //  alert(this.jsonrawdata);
 
 		$.each(jsonOBJ, function (index, typeitem) {
 			myself.typedataarr[typeitem['areacalctypeid']] = typeitem;
@@ -48,9 +50,12 @@ var CalcHandler = function (CalcTypes)
 
 
 		$('#MaterialTypesSelect').change(function (event) {
-			var optionSelected = $(this);
-			var valueSelected = optionSelected.val();
+		    
+			
+			var optionSelected = $(this).children('option:selected');
+			var valueSelected = optionSelected.attr('value');
 			var textSelected = optionSelected.text();
+			
 			myself.currentTypeID = valueSelected;
 			myself.currentType = myself.typedataarr[valueSelected];
 			myself.setMinH();
@@ -144,7 +149,7 @@ var CalcHandler = function (CalcTypes)
 
 $(document).ready(function ()
 {
-    alert('hallo');
+ 
 	var CH = new CalcHandler(typejsonraw);
 	CH.init();
 	CH.setOption1(option1);

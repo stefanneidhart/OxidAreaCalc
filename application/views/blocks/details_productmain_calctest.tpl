@@ -23,8 +23,8 @@
 			<select class="MaterialTypesSelect" id="MaterialTypesSelect" name="MaterialTypesSelect">
 				[{foreach from=$staffeltypen item=oMaterialTypen key=iKey}]
 
-				<option value="[{$oMaterialTypen.areacalctypeid}]">[{$oMaterialTypen.title}] - [{$oMaterialTypen.title2}]</option>
-
+				<option value="[{$oMaterialTypen.OXID}]">[{$oMaterialTypen.title}] - [{$oMaterialTypen.title2}]  </option>
+[{$oMaterialTypen|@var_dump}]
 				[{/foreach}]
 			</select>
 		</div>
