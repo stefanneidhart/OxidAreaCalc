@@ -28,13 +28,13 @@ $aModule = array(
     'email'       => 'info@stefanneidhart.de',
     'extend'      => array(
 	
-	'oxarticle' => 'areacalc2/application/models/sn_areacalc_oxarticle',
-	'oxbasketitem' => 'areacalc2/application/models/sn_calcarea_oxbasketitem',
-	'oxorderarticle' => 'areacalc2/application/models/sn_calcarea_oxorderarticle',
-	'basket' => 'areacalc2/application/models/sn_calcarea_basket',
-	'order' => 'areacalc2/application/models/sn_calcarea_order',
-	'oxviewconfig' => 'areacalc2/application/models/sn_calcarea_oxviewconfig',
-	'oxBasket' => 'areacalc2/application/models/sn_areacalc_oxBasket',	
+	'oxarticle' => 'oxid6-areacalc-module/application/models/sn_areacalc_oxarticle',
+	'oxbasketitem' => 'oxid6-areacalc-module/application/models/sn_calcarea_oxbasketitem',
+	'oxorderarticle' => 'oxid6-areacalc-module/application/models/sn_calcarea_oxorderarticle',
+	'basket' => 'oxid6-areacalc-module/application/models/sn_calcarea_basket',
+	'order' => 'oxid6-areacalc-module/application/models/sn_calcarea_order',
+	'oxviewconfig' => 'oxid6-areacalc-module/application/models/sn_calcarea_oxviewconfig',
+	'oxBasket' => 'oxid6-areacalc-module/application/models/sn_areacalc_oxBasket',	
     ),
     'controllers'       => array(  
         'maincontrollerareacalc' => \sn\oxid6AreacalcModule\Controller\Admin\MainController::class,
@@ -42,7 +42,7 @@ $aModule = array(
     'files'       => array(),
     'templates'   => array(
         'articlecalcsn.tpl' => 'sn/oxid6-areacalc-module/views/admin/articlecalcsn.tpl',
-	'ajaxareacalc.tpl' => 'areacalc2/out/tpl/page/details/inc/ajaxareacalc.tpl',
+	'ajaxareacalc.tpl' => 'oxid6-areacalc-module/out/tpl/page/details/inc/ajaxareacalc.tpl',
     ),
     'blocks'      => array(
 	
@@ -89,6 +89,6 @@ $aModule = array(
 	array('group' => 'main', 'name' => 'testsetting', 'type' => 'bool', 'value' => 'true'),
     ),
     'files' => array(
-	'snareacalcajax' => 'areacalc2/controllers/snareacalcajax.php',
+	'snareacalcajax' => 'oxid6-areacalc-module/controllers/snareacalcajax.php',
     ),
 );

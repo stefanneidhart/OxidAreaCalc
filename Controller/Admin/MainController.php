@@ -115,7 +115,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	$oNew->areacalc_typen__gewicht = new \OxidEsales\Eshop\Core\Field($aParams['gewicht']);
 	$oNew->save();
 
-	$this->add_staffel_type($uid);
+	$this->add_staffel_type($oNew->getId());
     }
 
     public function delete_type() {
@@ -136,9 +136,6 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	$aParams = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("typevalsave");
 
 	foreach ($aParams AS $areacalctypeid => $itemvalues) {
-	    
-	    var_dump($itemvalues);
-
 	    $sQ = 'UPDATE areacalc_typen '
 		    . 'SET title = ' . $oDb->quote($itemvalues['title']) . ', '
 		    . 'title2 = ' . $oDb->quote($itemvalues['title2']) . ', '
@@ -146,27 +143,20 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 		    . 'hoehe_max = ' . $oDb->quote($itemvalues['hoehe_max']) . ', '
 		    . 'gewicht = ' . $oDb->quote($itemvalues['gewicht']) . ' '
 		    . 'WHERE OXID = ' . $oDb->quote($areacalctypeid);
-	    var_dump($sQ);
 	    $oDb->execute($sQ);
 	}
     }
 
-    public function get_types() {
+    public function get_types() { 
 	$oDb = $this->getDB();
 	$aid = $this->getEditObjectId();
 
 	$sQ = "SELECT * FROM areacalc_typen WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY title ASC";
-	//$oDb->execute($sQ);
-	//$aData = $oDb->getAll($sQ);
 
 	$aData = $oDb->getAll($sQ);
-	var_dump($aData);
-
-
-
 	foreach ($aData as $key => $typeitem) {
 
-	    $aData[$key]['staffeln'] = $this->get_staffeln_types($typeitem['areacalctypeid']);
+	    $aData[$key]['staffeln'] = $this->get_staffeln_types($typeitem['OXID']);
 	}
 	return $aData;
     }
@@ -179,15 +169,16 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	$types = $this->get_types();
 	$staffelung = $aParams['staffelung'];
 
-	foreach ($types as $typeitem) {
+	foreach ($types as $typeitem) { 
 	    $staffel_uid = $this->getUID();
-	    $type_id = $typeitem['areacalctypeid'];
-	    $sQ = "INSERT INTO areacalc_typen_staffel (staffel, areacalctypeid, areacalcstaffelid, oxidarticleid) VALUES (" . $oDb->quote($staffelung) . ", " . $oDb->quote($type_id) . ", " . $oDb->quote($staffel_uid) . " , " . $oDb->quote($aid) . ")";
-	    $oDb->execute($sQ);
+	    $type_id = $typeitem['OXID'];
+	    $sQ = "INSERT INTO areacalc_typen_staffel (staffel, areacalctypeid, areacalcstaffelid, oxidarticleid, OXID) VALUES (" . $oDb->quote($staffelung) . ", " . $oDb->quote($type_id) . ", " . $oDb->quote($staffel_uid) . " , " . $oDb->quote($aid) . ", " . $oDb->quote($staffel_uid) . ")";
+	    $oDb->execute($sQ); 
 	}
     }
 
     public function add_staffel_type($type_id) {
+		
 	$oDb = $this->getDB();
 	
 	$aParams = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("staffelval");
@@ -198,9 +189,6 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 
 	foreach ($staffeln as $staffeltem) {
 	    $staffel_uid = $uid = $this->getUID();
-	    //   $sQ = "INSERT INTO areacalc_typen_staffel (staffel, areacalctypeid, areacalcstaffelid, oxidarticleid) VALUES (" . $oDb->quote($staffeltem['staffel']) . ", " . $oDb->quote($type_id) . ", " . $oDb->quote($staffel_uid) . " , " . $oDb->quote($aid) . ")";
-	    //  $oDb->execute($sQ);
-
 
 	    $oNew = oxNew(\OxidEsales\EshopCommunity\Core\Model\BaseModel::class);
 	    $oNew->init('areacalc_typen_staffel');
@@ -218,12 +206,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	$oDb = $this->getDB();
 	$aid = $this->getEditObjectId();
 	$sQ = "SELECT DISTINCT staffel FROM areacalc_typen_staffel WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY staffel ASC";
-	//$aData = $oDb->getAll($sQ);
-
-
 	$aData = $oDb->getAll($sQ);
-
-
 	return $aData;
     }
 
@@ -231,9 +214,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	$oDb = $this->getDB();
 	$aid = $this->getEditObjectId();
 	$sQ = "SELECT * FROM areacalc_typen_staffel WHERE areacalctypeid = " . $oDb->quote($typeid) . " and oxidarticleid = " . $oDb->quote($aid) . " ORDER BY staffel ASC";
-	//$aData = oxDb::getDb(oxDb::FETCH_MODE_ASSOC)->fetchAll($sQ);
 	$aData = $oDb->getAll($sQ);
-
 	return $aData;
     }
 
@@ -275,11 +256,7 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
 	    $aParams['oxarticles__oxcalctest'] = '';
 	}
 
-
-	$oArticle = $this->_aViewData['edit'];
-
-// shopid
-	
+	$oArticle = $this->_aViewData['edit'];	
 	$myConfig = $this->getConfig();
 	
 	

@@ -262,12 +262,12 @@
 						<td>
 							<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="title_[{$_cnt1}]" value="[{$typeitem.title}]" readonly>
 						</td>
-
-
+[{*$typeitem|@var_dump*}] 
+	
 						[{foreach from=$typeitem.staffeln item=staffel}]
 
 						<td>
-							<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="staffelungen[[{$typeitem.areacalctypeid}]][[{$staffel.staffel}]]" value="[{$staffel.preis}]" >
+							<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="staffelungen[[{$typeitem.OXID}]][[{$staffel.staffel}]]" value="[{$staffel.preis}]" >
 						</td>
 
 
