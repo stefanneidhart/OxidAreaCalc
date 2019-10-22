@@ -2,14 +2,12 @@
 
 namespace sn\oxid6AreacalcModule\Model;
 
-class Article extends Article_parent 
-{
+class Article extends Article_parent {
 
-    
-        public function getDB() {
+    public function getDB() {
 	return \OxidEsales\Eshop\Core\DatabaseProvider::getDb(\OxidEsales\Eshop\Core\DatabaseProvider::FETCH_MODE_ASSOC);
     }
-    
+
     public function getPrice($dAmount = 1) {
 	parent::getPrice($dAmount = 1);
 	if (!empty($this->oxarticles__oxcalctest->value)) {
@@ -45,7 +43,7 @@ class Article extends Article_parent
 	$aid = $this->getId();
 
 	$sQ = "SELECT * FROM areacalc_typen WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY title ASC";
-	$oDb->execute($sQ);
+	//$oDb->execute($sQ);
 	$aData = $oDb->getAll($sQ);
 
 	foreach ($aData as $key => $typeitem) {
