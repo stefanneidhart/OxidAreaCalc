@@ -7,7 +7,7 @@ class OrderArticle extends OrderArticle_parent {
 	parent::getPrice($dAmount = 1);
 	if (!empty($this->oxarticles__oxcalctest->value)) {
 
-	    $types = $this->get_types();
+	    $types = $this->get_sntypes();
 	    $firsttype = array_shift($types);
 
 
@@ -21,12 +21,12 @@ class OrderArticle extends OrderArticle_parent {
 
     public function get_types_json() {
 
-	$aData = $this->get_types();
+	$aData = $this->get_sntypes();
 	return json_encode($aData);
     }
 
     public function get_sntype($materialid) {
-	$materialien = $this->get_types();
+	$materialien = $this->get_sntypes();
 	$curM = null;
 	foreach ($materialien AS $key => $material) {
 	    if ($material['areacalctypeid'] == $materialid) {
@@ -37,7 +37,7 @@ class OrderArticle extends OrderArticle_parent {
     }
     
     public function getMaterialWeight($materialid) {
-	$materialien = $this->get_types();
+	$materialien = $this->get_sntypes();
 	$curM = null;
 	foreach ($materialien AS $key => $material) {
 	    if ($material['areacalctypeid'] == $materialid) {
@@ -49,7 +49,7 @@ class OrderArticle extends OrderArticle_parent {
     }
     
     public function getMaterialName ($materialid) {
-		$materialien = $this->get_types();
+		$materialien = $this->get_sntypes();
 	$curM = null;
 	foreach ($materialien AS $key => $material) {
 	    if ($material['areacalctypeid'] == $materialid) {
@@ -85,7 +85,7 @@ class OrderArticle extends OrderArticle_parent {
 
     public function get_staffel($materialid, $hoehe) {
 
-	$materialien = $this->get_types();
+	$materialien = $this->get_sntypes();
 	$curM = null;
 	foreach ($materialien AS $key => $material) {
 	    if ($material['areacalctypeid'] == $materialid) {
