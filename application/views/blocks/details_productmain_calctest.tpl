@@ -2,7 +2,7 @@
 
 [{if $oDetailsProduct->oxarticles__oxcalctest->value == 1}]
 
-[{oxstyle include=$oViewConf->getModuleUrl("OxidAreaCalc", "out/src/css/sn_calc.css") }]
+[{oxstyle include=$oViewConf->getModuleUrl("snAreaCalc", "out/src/css/sn_calc.css") }]
 
 [{assign var="staffeltypen" value=$oDetailsProduct->get_types()}]
 [{assign var="typesjson" value=$oDetailsProduct->get_types_json()}]
