@@ -4,7 +4,7 @@
   Best practice: yournameabbr_modulename_origclassname extends [yourclassname]_parent.
   Instantiate your new class: */
 
-namespace sn\oxid6AreacalcModule\Model;
+namespace sn\oxid6AreacalcModule\Core;
 
 class ViewConfig extends ViewConfig_parent
 {
