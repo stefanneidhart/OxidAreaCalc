@@ -26,7 +26,7 @@ class sn_areacalc_oxarticle extends sn_areacalc_oxarticle_parent {
 	return json_encode($aData);
     }
 
-    public function get_type($materialid) {
+    public function get_sntype($materialid) {
 	$materialien = $this->get_types();
 	$curM = null;
 	foreach ($materialien AS $key => $material) {
@@ -37,7 +37,7 @@ class sn_areacalc_oxarticle extends sn_areacalc_oxarticle_parent {
 	return $curM;
     }
 
-    public function get_types() {
+    public function get_sntypes() {
 	$oDb = $this->getDB();
 	$aid = $this->getId();
 

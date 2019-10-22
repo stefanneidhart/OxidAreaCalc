@@ -24,7 +24,7 @@ class sn_calcarea_oxorderarticle extends sn_calcarea_oxorderarticle_parent {
 	return json_encode($aData);
     }
 
-    public function get_type($materialid) {
+    public function get_sntype($materialid) {
 	$materialien = $this->get_types();
 	$curM = null;
 	foreach ($materialien AS $key => $material) {
@@ -58,7 +58,7 @@ class sn_calcarea_oxorderarticle extends sn_calcarea_oxorderarticle_parent {
 	return $curM['title'] . " - " . $curM['title2'];
     }
 
-    public function get_types() {
+    public function get_sntypes() {
 	$oDb = oxDb::getDb();
 	$aid = $this->getProductId();
 

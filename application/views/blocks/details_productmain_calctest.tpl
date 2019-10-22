@@ -4,7 +4,7 @@
 
 [{oxstyle include=$oViewConf->getModuleUrl("snAreaCalc", "out/src/css/sn_calc.css") }]
 
-[{assign var="staffeltypen" value=$oDetailsProduct->get_types()}]
+[{assign var="staffeltypen" value=$oDetailsProduct->get_sntypes()}]
 [{assign var="typesjson" value=$oDetailsProduct->get_types_json()}]
 
 <script type="text/javascript">
