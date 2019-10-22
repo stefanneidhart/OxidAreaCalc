@@ -144,6 +144,7 @@ var CalcHandler = function (CalcTypes)
 
 $(document).ready(function ()
 {
+    alert('hallo');
 	var CH = new CalcHandler(typejsonraw);
 	CH.init();
 	CH.setOption1(option1);
