@@ -2,6 +2,11 @@
 
 class sn_areacalc_oxarticle extends sn_areacalc_oxarticle_parent {
 
+    
+        public function getDB() {
+	return \OxidEsales\Eshop\Core\DatabaseProvider::getDb(\OxidEsales\Eshop\Core\DatabaseProvider::FETCH_MODE_ASSOC);
+    }
+    
     public function getPrice($dAmount = 1) {
 	parent::getPrice($dAmount = 1);
 	if (!empty($this->oxarticles__oxcalctest->value)) {
@@ -33,12 +38,12 @@ class sn_areacalc_oxarticle extends sn_areacalc_oxarticle_parent {
     }
 
     public function get_types() {
-	$oDb = oxDb::getDb();
+	$oDb = $this->getDB();
 	$aid = $this->getId();
 
 	$sQ = "SELECT * FROM areacalc_typen WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY title ASC";
 	$oDb->execute($sQ);
-	$aData = oxDb::getDb(oxDb::FETCH_MODE_ASSOC)->getAll($sQ);
+	$aData = $oDb->getAll($sQ);
 
 	foreach ($aData as $key => $typeitem) {
 
@@ -48,10 +53,10 @@ class sn_areacalc_oxarticle extends sn_areacalc_oxarticle_parent {
     }
 
     public function get_staffeln() {
-	$oDb = oxDb::getDb();
+	$oDb = $this->getDB();
 	$aid = $this->getId();
 	$sQ = "SELECT DISTINCT staffel FROM areacalc_typen_staffel WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY staffel ASC";
-	$aData = oxDb::getDb(oxDb::FETCH_MODE_ASSOC)->getAll($sQ);
+	$aData = $oDb->getAll($sQ);
 	return $aData;
     }
 
@@ -97,10 +102,10 @@ class sn_areacalc_oxarticle extends sn_areacalc_oxarticle_parent {
     }
 
     public function get_staffeln_types($typeid) {
-	$oDb = oxDb::getDb();
+	$oDb = $this->getDB();
 	$aid = $this->getId();
 	$sQ = "SELECT * FROM areacalc_typen_staffel WHERE areacalctypeid = " . $oDb->quote($typeid) . " and oxidarticleid = " . $oDb->quote($aid) . " ORDER BY staffel ASC";
-	$aData = oxDb::getDb(oxDb::FETCH_MODE_ASSOC)->getAll($sQ);
+	$aData = $oDb->getAll($sQ);
 	return $aData;
     }
 
