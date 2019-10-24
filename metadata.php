@@ -59,8 +59,8 @@ $aModule = array(
 	    'block' => 'details_productmain_shortdesc',
 	    'file' => 'application/views/blocks/details_productmain_calctest.tpl'),
 	array(
-	    'template' => 'page/checkout/inc/basketcontents.tpl',
-	    'block' => 'checkout_basketcontents_basketitem_titlenumber',
+	    'template' => 'page/checkout/inc/basketcontents_table.tpl',
+	    'block' => 'checkout_basketcontents_basketitem_persparams',
 	    'file' => 'application/views/blocks/checkout_basketcontents_basketitem_titlenumber.tpl'
 	),
 	array(

@@ -1,4 +1,4 @@
-[{* product title & number
+[{* product title & number *}]
 
 <td>
     <div>
@@ -120,42 +120,3 @@
     [{/if}]
 
 </td>
- *}]
- 
- xx
-        
-                                        [{if !$editable}]
-                                            <p class="persparamBox">
-                                                [{foreach key=sVar from=$basketitem->getPersParams() item=aParam name=persparams}]
-                                                    [{if !$smarty.foreach.persparams.first}]<br />[{/if}]
-                                                    <strong>
-                                                        [{if $smarty.foreach.persparams.first && $smarty.foreach.persparams.last}]
-                                                            [{oxmultilang ident="LABEL"}]
-                                                        [{else}]
-                                                            [{$sVar}] :
-                                                        [{/if}]
-                                                    </strong> [{$aParam}]
-                                                [{/foreach}]
-                                            </p>
-                                        [{else}]
-                                            [{if $basketproduct->oxarticles__oxisconfigurable->value}]
-                                                [{if $basketitem->getPersParams()}]
-                                                    <br />
-                                                    [{foreach key=sVar from=$basketitem->getPersParams() item=aParam name=persparams}]
-                                                        <p>
-                                                            <label class="persParamLabel">
-                                                                [{if $smarty.foreach.persparams.first && $smarty.foreach.persparams.last}]
-                                                                    [{oxmultilang ident="LABEL"}]
-                                                                [{else}]
-                                                                    [{$sVar}]:
-                                                                [{/if}]
-                                                            </label>
-                                                            <input class="textbox persParam" type="text" name="aproducts[[{$basketindex}]][persparam][[{$sVar}]]" value="[{$aParam}]">
-                                                        </p>
-                                                    [{/foreach}]
-                                                [{else}]
-                                                    <p>[{oxmultilang ident="LABEL"}] <input class="textbox persParam" type="text" name="aproducts[[{$basketindex}]][persparam][details]" value=""></p>
-                                                [{/if}]
-                                            [{/if}]
-                                        [{/if}]
-                                  

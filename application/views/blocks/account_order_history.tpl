@@ -76,6 +76,9 @@
 					    
 					    
 						[{if $sVar == 'MaterialTypesSelect' }]
+						
+						[{$aParam}]
+						
 						  <br /> [{ oxmultilang ident=$sVar suffix="COLON" }] [{$orderitem->getMaterialName($aParam)}]
 						  [{elseif $sVar == 'areacalc_opt1' && $aParam == 1  || $sVar == 'areacalc_opt2' && $aParam == 1 }]  
 						 <br />[{ oxmultilang ident=$sVar suffix="COLON" }] [{ oxmultilang ident="ja" }]
