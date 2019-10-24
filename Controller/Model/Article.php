@@ -2,16 +2,18 @@
 
 namespace sn\oxid6AreacalcModule\Model;
 
-class Article extends Article_parent {
+class Article extends Article_parent 
+{
 
-    public function getDB() {
+    
+        public function getDB() {
 	return \OxidEsales\Eshop\Core\DatabaseProvider::getDb(\OxidEsales\Eshop\Core\DatabaseProvider::FETCH_MODE_ASSOC);
     }
-
+    
     public function getPrice($dAmount = 1) {
 	parent::getPrice($dAmount = 1);
 	if (!empty($this->oxarticles__oxcalctest->value)) {
-	    $types = $this->get_sntypes();
+	    $types = $this->get_types();
 	    $firsttype = array_shift($types);
 	    $oPrice = $this->_getPriceObject();
 	    $orgiPrice = $this->_oPrice->getPrice();
@@ -23,15 +25,15 @@ class Article extends Article_parent {
 
     public function get_types_json() {
 
-	$aData = $this->get_sntypes();
+	$aData = $this->get_types();
 	return json_encode($aData);
     }
 
     public function get_sntype($materialid) {
-	$materialien = $this->get_sntypes();
+	$materialien = $this->get_types();
 	$curM = null;
 	foreach ($materialien AS $key => $material) {
-	    if ($material['OXID'] == $materialid) {
+	    if ($material['areacalctypeid'] == $materialid) {
 		$curM = $material;
 	    }
 	}
@@ -43,30 +45,29 @@ class Article extends Article_parent {
 	$aid = $this->getId();
 
 	$sQ = "SELECT * FROM areacalc_typen WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY title ASC";
-	//$oDb->execute($sQ);
+	$oDb->execute($sQ);
 	$aData = $oDb->getAll($sQ);
 
 	foreach ($aData as $key => $typeitem) {
 
-	    $aData[$key]['staffeln'] = $this->get_staffeln_types($typeitem['OXID']);
+	    $aData[$key]['staffeln'] = $this->get_staffeln_types($typeitem['areacalctypeid']);
 	}
 	return $aData;
     }
 
     public function get_staffeln() {
-
 	$oDb = $this->getDB();
-	$aid = $this->getEditObjectId();
+	$aid = $this->getId();
 	$sQ = "SELECT DISTINCT staffel FROM areacalc_typen_staffel WHERE oxidarticleid = " . $oDb->quote($aid) . " ORDER BY staffel ASC";
 	$aData = $oDb->getAll($sQ);
 	return $aData;
     }
 
     public function getMaterialWeight($materialid) {
-	$materialien = $this->get_sntypes();
+	$materialien = $this->get_types();
 	$curM = null;
 	foreach ($materialien AS $key => $material) {
-	    if ($material['OXID'] == $materialid) {
+	    if ($material['areacalctypeid'] == $materialid) {
 		$curM = $material;
 	    }
 	}
@@ -74,10 +75,10 @@ class Article extends Article_parent {
     }
 
     public function getMaterialName($materialid) {
-	$materialien = $this->get_sntypes();
+	$materialien = $this->get_types();
 	$curM = null;
 	foreach ($materialien AS $key => $material) {
-	    if ($material['OXID'] == $materialid) {
+	    if ($material['areacalctypeid'] == $materialid) {
 		$curM = $material;
 	    }
 	}
@@ -86,10 +87,10 @@ class Article extends Article_parent {
 
     public function get_staffel($materialid, $hoehe) {
 
-	$materialien = $this->get_sntypes();
+	$materialien = $this->get_types();
 	$curM = null;
 	foreach ($materialien AS $key => $material) {
-	    if ($material['OXID'] == $materialid) {
+	    if ($material['areacalctypeid'] == $materialid) {
 		$curM = $material;
 	    }
 	}

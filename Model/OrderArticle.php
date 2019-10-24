@@ -34,7 +34,7 @@ class OrderArticle extends OrderArticle_parent {
 	$materialien = $this->get_sntypes();
 	$curM = null;
 	foreach ($materialien AS $key => $material) {
-	    if ($material['areacalctypeid'] == $materialid) {
+	    if ($material['OXID'] == $materialid) {
 		$curM = $material;
 	    }
 	}
@@ -45,7 +45,7 @@ class OrderArticle extends OrderArticle_parent {
 	$materialien = $this->get_sntypes();
 	$curM = null;
 	foreach ($materialien AS $key => $material) {
-	    if ($material['areacalctypeid'] == $materialid) {
+	    if ($material['OXID'] == $materialid) {
 		$curM = $material;
 	    }
 	}
@@ -57,7 +57,7 @@ class OrderArticle extends OrderArticle_parent {
 		$materialien = $this->get_sntypes();
 	$curM = null;
 	foreach ($materialien AS $key => $material) {
-	    if ($material['areacalctypeid'] == $materialid) {
+	    if ($material['OXID'] == $materialid) {
 		$curM = $material;
 	    }
 	}
@@ -74,7 +74,7 @@ class OrderArticle extends OrderArticle_parent {
 
 	foreach ($aData as $key => $typeitem) {
 
-	    $aData[$key]['staffeln'] = $this->get_staffeln_types($typeitem['areacalctypeid']);
+	    $aData[$key]['staffeln'] = $this->get_staffeln_types($typeitem['OXID']);
 	}
 	//var_dump($aData);
 	return $aData;
@@ -93,7 +93,7 @@ class OrderArticle extends OrderArticle_parent {
 	$materialien = $this->get_sntypes();
 	$curM = null;
 	foreach ($materialien AS $key => $material) {
-	    if ($material['areacalctypeid'] == $materialid) {
+	    if ($material['OXID'] == $materialid) {
 		$curM = $material;
 	    }
 	}

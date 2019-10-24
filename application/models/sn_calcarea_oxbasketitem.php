@@ -1,10 +1,9 @@
 <?php
-namespace sn\oxid6AreacalcModule\Model;
 
-class BasketItem extends BasketItem_parent {
+class sn_calcarea_oxbasketitem extends sn_calcarea_oxbasketitem_parent {
 
     public function getMaterial($materialid) {
-	return $this->_oArticle->get_sntype($materialid);
+	return $this->_oArticle->get_type($materialid);
     }
 
     public function getMaterialWeight($materialid) {
@@ -24,10 +23,10 @@ class BasketItem extends BasketItem_parent {
     }
 
     public function getMaterialName($materialid) {
-	$materialien = $this->_oArticle->get_sntypes();
+	$materialien = $this->_oArticle->get_types();
 	$curM = null;
 	foreach ($materialien AS $key => $material) {
-	    if ($material['OXID'] == $materialid) {
+	    if ($material['areacalctypeid'] == $materialid) {
 		$curM = $material;
 	    }
 	}

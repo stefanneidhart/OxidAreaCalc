@@ -1,8 +1,12 @@
 <?php
-namespace sn\oxid6AreacalcModule\Model;
 
-class Basket extends Basket_parent
-{
+namespace sn\oxid6AreacalcModule\Model;
+/**
+ * Description of sn_areacalc_oxBasket
+ *
+ * @author neidini
+ */
+class Basket extends Basket_parent {
 
     public function addToBasket($sProductID, $dAmount, $aSel = null, $aPersParam = null, $blOverride = false, $blBundle = false, $sOldBasketItemId = null) {
 	// enabled ?
@@ -18,34 +22,22 @@ class Basket extends Basket_parent
 		$this->setCatChangeWarningState(false);
 	    }
 	}
-	
-	$session = \OxidEsales\Eshop\Core\Registry::getSession(); 	
-	
 	if ($sOldBasketItemId != null) {
-	  //  $bitemsdata = oxSession::getVar($sOldBasketItemId);
-	    $bitemsdata = $session->getVariable($sOldBasketItemId);
-	    
+	    $bitemsdata = oxSession::getVar($sOldBasketItemId);
 	    if ($bitemsdata != null) {
 		 $aPersParam=$bitemsdata;
 	    }
 	}
-	
-	
-	
-	//$areacalc_active = \OxidEsales\Eshop\Core\Config::getParameter('areacalc_active');
-	
-	
-	$areacalc_active = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("areacalc_active");
-	
-	//$areacalc_active = oxConfig::getParameter('areacalc_active');
+
+	$areacalc_active = oxConfig::getParameter('areacalc_active');
 	$calcnewflag = false;
 	if (!empty($areacalc_active) && $areacalc_active == '1') {
 	    $aPersParam['areacalc_active'] = '1';
-	    $aPersParam['breite'] = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("breite");
-	    $aPersParam['hoehe'] = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("hoehe");
-	    $aPersParam['MaterialTypesSelect'] = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("MaterialTypesSelect");
-	    $aPersParam['areacalc_opt1'] = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("areacalc_opt1");
-	    $aPersParam['areacalc_opt2'] = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("areacalc_opt2");
+	    $aPersParam['breite'] = oxConfig::getParameter('breite');
+	    $aPersParam['hoehe'] = oxConfig::getParameter('hoehe');
+	    $aPersParam['MaterialTypesSelect'] = oxConfig::getParameter('MaterialTypesSelect');
+	    $aPersParam['areacalc_opt1'] = oxConfig::getParameter('areacalc_opt1');
+	    $aPersParam['areacalc_opt2'] = oxConfig::getParameter('areacalc_opt2');
 	    $calcnewflag = true;
 	}
 
@@ -55,8 +47,7 @@ class Basket extends Basket_parent
 	}
 
 	if (!empty($areacalc_active) && $areacalc_active == '1') {
-	   // oxSession::setVar($sItemId, $aPersParam);
-	    $session->setVariable($sItemId, $aPersParam);
+	    oxSession::setVar($sItemId, $aPersParam);
 	}
 
 

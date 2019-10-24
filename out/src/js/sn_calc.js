@@ -19,7 +19,7 @@ var CalcHandler = function (CalcTypes)
 		 //  alert(this.jsonrawdata);
 
 		$.each(jsonOBJ, function (index, typeitem) {
-			myself.typedataarr[typeitem['areacalctypeid']] = typeitem;
+			myself.typedataarr[typeitem['OXID']] = typeitem;
 		});
 
 		$('#hoehe, #breite').change(function () {
@@ -56,19 +56,29 @@ var CalcHandler = function (CalcTypes)
 			var valueSelected = optionSelected.attr('value');
 			var textSelected = optionSelected.text();
 			
+			
+		
 			myself.currentTypeID = valueSelected;
 			myself.currentType = myself.typedataarr[valueSelected];
+			
+			
+			
 			myself.setMinH();
 			myself.calcArea();
 			myself.calcPrice();
+			
+			
 		});
 		$('#MaterialTypesSelect').change();
 	}
 
 	this.calcArea = function ()
 	{
+		
 		var hoehe = this.getHeight();
 		var breite = Number($('#breite').val());
+		
+		
 		var result = hoehe * breite;
 		$('#AreaResult').html(result + ' m²');
 		this.calcWeight(result);
