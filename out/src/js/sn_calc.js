@@ -114,7 +114,12 @@ var CalcHandler = function (CalcTypes)
 	}
 
 	this.setPrice = function (price) {
-		$('#productPrice').html('<strong><span>' + price + ' €</span><span>*</span></strong>');
+		$('#productPrice').html('<span><span class="price-from"></span><span class="price">' + price + ' €</span><span class="price-markup">*</span><span class="d-none"> <span itemprop="price">' + price + ' €</span></span></span>');
+		
+		
+		
+		
+		
 	}
 
 	this.calcPrice = function ()

@@ -24,7 +24,7 @@
 				[{foreach from=$staffeltypen item=oMaterialTypen key=iKey}]
 
 				<option value="[{$oMaterialTypen.OXID}]">[{$oMaterialTypen.title}] - [{$oMaterialTypen.title2}]  </option>
-
+[{$oMaterialTypen|@var_dump}]
 				[{/foreach}]
 			</select>
 		</div>
@@ -50,22 +50,18 @@
 			<div class="WeightResult"></div>
 			<input id="CalcWeight" type="hidden" name="CalcWeight" value="1" size="3" autocomplete="off" class="textbox">
 		</div>
-		
-		[{if $oDetailsProduct->getOption1() > 0}]
+
 		<div class="itemrow StahlschieneContainer">
 			<label>Edelstahlprofilschine:</label>
 			<div class="WeightResult"></div>
 			<input class="edittext" type="checkbox" id="areacalc_opt1" name="areacalc_opt1" value='1' [{if $oDetailsProduct->oxarticles__areacalc_opt1->value == 1}]checked[{/if}] [{ $readonly }]>
 		</div>
-		[{/if}]
 		
-		[{if $oDetailsProduct->getOption2() > 0}]
 		<div class="itemrow VorSturtzContainer">
 			<label>S - vor Sturz</label>
 			<div class="WeightResult"></div>
 			<input class="edittext" type="checkbox" id="areacalc_opt2" name="areacalc_opt2" value='1' [{if $oDetailsProduct->oxarticles__areacalc_opt2->value == 1}]checked[{/if}] [{ $readonly }]>
 		</div>		
-		[{/if}]
 
     </div>
 

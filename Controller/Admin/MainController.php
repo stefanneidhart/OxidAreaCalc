@@ -20,8 +20,8 @@ class MainController extends \OxidEsales\Eshop\Application\Controller\Admin\Admi
     protected $_oArticle = null;
     protected $_sThisTemplate = 'articlecalcsn.tpl';
 
-    public function __construct() {
-	
+    public function __construct() { 
+		//var_dump($this->_sThisTemplate);
     }
 
     public function getDB() {

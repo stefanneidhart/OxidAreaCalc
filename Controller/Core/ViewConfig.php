@@ -9,6 +9,9 @@ namespace sn\oxid6AreacalcModule\Model;
 class ViewConfig extends ViewConfig_parent
 {
 
-
+    public function getSNCategoryTree()
+    {
+        return true;
+    }
 
 }
