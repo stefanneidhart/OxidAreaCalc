@@ -36,4 +36,7 @@ $aLang = array(
     'areacalc_opt1' => 'Profilschine',
     'areacalc_opt2' => 'vor Sturz',
     'COLON'=> ':',
+    'maincontrollerareacalc'=>'Flächenberechnung',
+    'SHOP_MODULE_GROUP_main' => 'test',
+    'ja' => 'ja',        
 );
