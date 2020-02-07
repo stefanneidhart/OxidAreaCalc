@@ -98,7 +98,8 @@ var CalcHandler = function (CalcTypes)
 
     this.calcWeight = function (area) {
 	var weight = (area * this.currentType['gewicht']) / 1000;
-	$('.WeightContainer .WeightResult').html(weight + ' KG');
+	//$('.WeightContainer .WeightResult').html(weight + ' KG');
+	$('.weight').html('Gewicht: '+ weight + ' kg');
     }
 
     this.getHeight = function () {
@@ -118,7 +119,7 @@ var CalcHandler = function (CalcTypes)
     }
 
     this.setUnitPrice = function (price) {
-	$('#productPriceUnit').html(price + ' €');
+	$('#productPriceUnit').html(price + ' € je m²');
     }
 
     this.calcPrice = function ()
