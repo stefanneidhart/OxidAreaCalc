@@ -46,8 +46,8 @@
 		</div>
 
 		<div class="itemrow WeightContainer">
-			<label>Gewicht:</label>
-			<div class="WeightResult"></div>
+			[{*<label>Gewicht:</label>
+			<div class="WeightResult"></div>*}]
 			<input id="CalcWeight" type="hidden" name="CalcWeight" value="1" size="3" autocomplete="off" class="textbox">
 		</div>
 		
