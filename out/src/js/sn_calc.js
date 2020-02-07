@@ -150,7 +150,7 @@ var CalcHandler = function (CalcTypes)
 	}
 
 	this.setPrice(newPrice);
-	this.setUnitPrice(newPrice);
+	this.setUnitPrice(newPrice/(breite * hoehe));
     }
 
     this.setOption1 = function (option) {
