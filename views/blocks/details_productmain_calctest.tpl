@@ -12,6 +12,7 @@
 	var typejsonraw = '[{$typesjson}]';
 	var option1 = '[{$oDetailsProduct->getOption1()}]';
 	var option2 = '[{$oDetailsProduct->getOption2()}]';
+	var option3 = '[{$oDetailsProduct->getOption3()}]';
 //-->
 </script>
 [{oxscript include=$oViewConf->getModuleUrl("snAreaCalc", "out/src/js/sn_calc.js") }]
@@ -51,7 +52,7 @@
 			<input id="CalcWeight" type="hidden" name="CalcWeight" value="1" size="3" autocomplete="off" class="textbox">
 		</div>
 		
-		[{if $oDetailsProduct->getOption1() > 0}]
+		[{*if $oDetailsProduct->getOption1() > 0}]
 		<div class="itemrow StahlschieneContainer">
 			<label>Edelstahlprofilschine:</label>
 			<div class="WeightResult"></div>
@@ -65,7 +66,7 @@
 			<div class="WeightResult"></div>
 			<input class="edittext" type="checkbox" id="areacalc_opt2" name="areacalc_opt2" value='1' [{if $oDetailsProduct->oxarticles__areacalc_opt2->value == 1}]checked[{/if}] [{ $readonly }]>
 		</div>		
-		[{/if}]
+		[{/if*}]
 
     </div>
 

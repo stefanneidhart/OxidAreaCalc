@@ -122,5 +122,7 @@ class OrderArticle extends OrderArticle_parent {
 	public function getOption2() {
 		return $this->oxarticles__areacalc_opt2->value;
 	}
-
+	public function getOption3() {
+		return $this->oxarticles__areacalc_opt3->value;
+	}
 }

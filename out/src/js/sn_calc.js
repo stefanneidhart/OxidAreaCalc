@@ -176,4 +176,5 @@ $(document).ready(function ()
     CH.init();
     CH.setOption1(option1);
     CH.setOption2(option2);
+    CH.setOption3(option3);
 });

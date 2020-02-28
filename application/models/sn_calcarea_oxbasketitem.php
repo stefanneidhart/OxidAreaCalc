@@ -67,7 +67,7 @@ class sn_calcarea_oxbasketitem extends sn_calcarea_oxbasketitem_parent {
 	    }
 	    $newPrice = ($breite * $hoehe) * $baseprice_staffel;
 
-	    if(!empty($this->_oArticle->getOption3())) {
+	    if(!empty($this->_oArticle->getOption2())) {
 		$newPrice = $newPrice + ($this->_oArticle->getOption2() * $breite);
 	    }
 

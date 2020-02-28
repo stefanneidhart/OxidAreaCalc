@@ -91,36 +91,36 @@
 		<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="editval[oxarticles__areacalc_opt1]" value="[{$edit->oxarticles__areacalc_opt1->value}]"  [{ $readonly }]>
 	    </td>
 	</tr>
-	<tr>
+	[{*<tr>
 	    <td>Aufschlag je Meter in der Breite Label</td>
 	    <td>				
 		<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="editval[oxarticles__areacalc_opt1_label]" value="[{$edit->oxarticles__areacalc_opt1_label->value}]"  [{ $readonly }]>
 	    </td>
-	</tr>		
+	</tr>		*}]
 	<tr>
 	    <td>Aufschlag je Meter in der Höhe</td>
 	    <td>				
 		<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="editval[oxarticles__areacalc_opt3]" value="[{$edit->oxarticles__areacalc_opt3->value}]"  [{ $readonly }]>
 	    </td>
 	</tr>	
-		<tr>
+	[{*	<tr>
 	    <td>Aufschlag je Meter in der Höhe Label</td>
 	    <td>				
 		<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="editval[oxarticles__areacalc_opt3_label]" value="[{$edit->oxarticles__areacalc_opt3_label->value}]"  [{ $readonly }]>
 	    </td>
-	</tr>
+	</tr>*}]
 	<tr>
 	    <td>Aufschlag je m²</td>
 	    <td>				
 		<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="editval[oxarticles__areacalc_opt2]" value="[{$edit->oxarticles__areacalc_opt2->value}]"  [{ $readonly }]>
 	    </td>
 	</tr>
-	<tr>
+[{*	<tr>
 	    <td>Aufschlag je m² Label</td>
 	    <td>				
 		<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="editval[oxarticles__areacalc_opt2_label]" value="[{$edit->oxarticles__areacalc_opt2_label->value}]"  [{ $readonly }]>
 	    </td>
-	</tr>	
+	</tr>	*}]
 	
 	<tr>
 	    <td></td>
