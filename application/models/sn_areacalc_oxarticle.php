@@ -118,6 +118,11 @@ class sn_areacalc_oxarticle extends sn_areacalc_oxarticle_parent {
 
 	return $this->oxarticles__areacalc_opt2->value;
     }
+    
+        public function getOption3() {
+
+	return $this->oxarticles__areacalc_opt3->value;
+    }
 
     public function render() {
 	

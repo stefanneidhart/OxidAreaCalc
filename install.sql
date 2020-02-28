@@ -1,7 +1,11 @@
 ALTER TABLE oxarticles 
 ADD oxcalctest VARCHAR( 100 ) NOT NULL ,
 ADD areacalc_opt1 VARCHAR( 100 ) NOT NULL ,
-ADD areacalc_opt2 VARCHAR( 100 ) NOT NULL ; 
+ADD areacalc_opt2 VARCHAR( 100 ) NOT NULL , 
+ADD areacalc_opt3 VARCHAR( 100 ) NOT NULL , 
+ADD areacalc_opt1_label VARCHAR( 100 ) NOT NULL ,
+ADD areacalc_opt2_label VARCHAR( 100 ) NOT NULL , 
+ADD areacalc_opt3_label VARCHAR( 100 ) NOT NULL ; 
 
 
 CREATE TABLE IF NOT EXISTS areacalc_typen (

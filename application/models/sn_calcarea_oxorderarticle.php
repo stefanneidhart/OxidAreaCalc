@@ -115,4 +115,8 @@ class sn_calcarea_oxorderarticle extends sn_calcarea_oxorderarticle_parent {
     public function getOption2() {
 	return $this->oxarticles__areacalc_opt2->value;
     }
+    
+    public function getOption3() {
+	return $this->oxarticles__areacalc_opt3->value;
+    }
 }

@@ -6,9 +6,11 @@ var CalcHandler = function (CalcTypes)
     this.currentTypeID = '';
     this.currentType = [];
     this.option1 = '';
-    this.option1active = false;
+    this.option1active = true;
     this.option2 = '';
-    this.option2active = false;
+    this.option2active = true;
+    this.option3 = '';
+    this.option3active = true;
 
     this.init = function ()
     {
@@ -30,7 +32,7 @@ var CalcHandler = function (CalcTypes)
 	});
 
 
-	$('#areacalc_opt1').change(function () {
+	/* $('#areacalc_opt1').change(function () {
 	    if ($(this).prop("checked")) {
 		myself.option1active = true;
 	    } else {
@@ -46,7 +48,7 @@ var CalcHandler = function (CalcTypes)
 		myself.option2active = false;
 	    }
 	    myself.calcPrice();
-	});
+	}); */
 
 
 	$('#MaterialTypesSelect').change(function (event) {
@@ -56,12 +58,8 @@ var CalcHandler = function (CalcTypes)
 	    var valueSelected = optionSelected.attr('value');
 	    var textSelected = optionSelected.text();
 
-
-
 	    myself.currentTypeID = valueSelected;
 	    myself.currentType = myself.typedataarr[valueSelected];
-
-
 
 	    myself.setMinH();
 	    myself.calcArea();
@@ -149,6 +147,10 @@ var CalcHandler = function (CalcTypes)
 	if (this.option1active === true) {
 	    newPrice = newPrice + (Number(this.option1) * breite);
 	}
+	
+	if (this.option3active === true) {
+	    newPrice = newPrice + (Number(this.option3) * breite);
+	}
 
 	this.setPrice(newPrice);
 	this.setUnitPrice(newPrice/(breite * hoehe));
@@ -160,6 +162,10 @@ var CalcHandler = function (CalcTypes)
 
     this.setOption2 = function (option) {
 	this.option2 = option;
+    }
+    
+    this.setOption3 = function (option) {
+	this.option3 = option;
     }
 };
 

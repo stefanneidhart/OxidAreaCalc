@@ -39,7 +39,7 @@ class sn_calcarea_oxbasketitem extends sn_calcarea_oxbasketitem_parent {
 	    $m2weight = $this->getMaterialWeight($aPersParams['MaterialTypesSelect']);
 	    $newWeight = ((( $aPersParams['hoehe'] * $aPersParams['breite'] ) * $m2weight ) / 1000) * $amount;
 	    $oArticle = $this->getArticle(true);
-	    $this->_dWeight = $newWeight ;
+	    $this->_dWeight = $newWeight;
 	    $oArticle->oxarticles__oxweight->value = $newWeight;
 	}
     }
@@ -61,14 +61,20 @@ class sn_calcarea_oxbasketitem extends sn_calcarea_oxbasketitem_parent {
 	    $staffelung = $this->_oArticle->get_staffel($aPersParams['MaterialTypesSelect'], $hoehe);
 	    $this->preisStaffel = $staffelung;
 	    $baseprice_staffel = doubleval($staffelung['preis']);
-	    if (isset($aPersParams['areacalc_opt1']) && !empty($aPersParams['areacalc_opt1'])) {
+
+	    if(!empty($this->_oArticle->getOption1())) {
 		$baseprice_staffel = $baseprice_staffel + $this->_oArticle->getOption1();
 	    }
 	    $newPrice = ($breite * $hoehe) * $baseprice_staffel;
 
-	    if (isset($aPersParams['areacalc_opt2']) && !empty($aPersParams['areacalc_opt2'])) {
+	    if(!empty($this->_oArticle->getOption3())) {
 		$newPrice = $newPrice + ($this->_oArticle->getOption2() * $breite);
 	    }
+
+	    if(!empty($this->_oArticle->getOption3())) {
+		$newPrice = $newPrice + ($this->_oArticle->getOption3() * $hoehe);
+	    }
+
 	    return $newPrice;
 	} else {
 	    return $this->_oPrice;
