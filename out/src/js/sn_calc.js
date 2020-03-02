@@ -137,8 +137,9 @@ var CalcHandler = function (CalcTypes)
 	}
 
 	var baseprice_staffel = Number(staffelung['preis']);
+	$('.db').html('Staffel: ' + baseprice_staffel);
 
-	if (this.option2active === true) {
+	if (Number(this.option2) > 0) {
 	    baseprice_staffel = baseprice_staffel + (Number(this.option2));
 	}
 
