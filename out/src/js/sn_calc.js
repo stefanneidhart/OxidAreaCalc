@@ -149,7 +149,7 @@ var CalcHandler = function (CalcTypes)
 	}
 	
 	if (this.option3active === true) {
-	    newPrice = newPrice + (Number(this.option3) * breite);
+	    newPrice = newPrice + (Number(this.option3) * hoehe);
 	}
 
 	this.setPrice(newPrice);

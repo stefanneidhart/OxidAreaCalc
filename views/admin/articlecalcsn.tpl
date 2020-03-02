@@ -257,7 +257,7 @@
 
     <tr>
 	<td class="edittext">
-	    <h2>Staffelungen</h2>
+	    <h2>Staffelungen in der Breite</h2>
 	    <form name="myeditstaffel" id="myeditstaffel" action="[{ $oViewConf->getSelfLink() }]" method="post">
 
 		[{ $oViewConf->getHiddenSid() }]
