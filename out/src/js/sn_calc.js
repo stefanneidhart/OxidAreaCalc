@@ -131,6 +131,7 @@ var CalcHandler = function (CalcTypes)
 	for (var i = 0; i < myself.currentType['staffeln'].length; i++) {
 
 	    var staffel_max_h = this.currentType['staffeln'][i]['staffel'];
+	   
 	    if (hoehe > staffel_max_h) {
 		staffelung = myself.currentType['staffeln'][i + 1];
 	    }
