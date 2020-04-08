@@ -129,9 +129,9 @@ var CalcHandler = function (CalcTypes)
 	var myself = this;
 	var hoehe = this.getHeight();
 	var breite = this.getWidth();
-
+	
 	var staffelung = myself.currentType['staffeln'][0];
-
+	alert('calc2');
 	for (var i = 0; i < myself.currentType['staffeln'].length; i++) {
 
 	    var staffel_max_h = this.currentType['staffeln'][i]['staffel'];
@@ -139,7 +139,7 @@ var CalcHandler = function (CalcTypes)
 		staffelung = myself.currentType['staffeln'][i + 1];
 	    }
 	}
-
+	alert('calc3');
 	var baseprice_staffel = Number(staffelung['preis']);
 
 	if (this.option2active === true) {
@@ -155,7 +155,7 @@ var CalcHandler = function (CalcTypes)
 	this.setPrice(newPrice);
 	this.setUnitPrice(newPrice/(breite * hoehe));
 	
-	alert('calc2');
+	alert('calcx');
     }
 
     this.setOption1 = function (option) {
