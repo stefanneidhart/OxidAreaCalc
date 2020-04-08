@@ -14,12 +14,12 @@ $sMetadataVersion = '2.0';
 $aModule = array(
 	'id' => 'snareacalc',
 	'title' => array(
-		'de' => 'OXID6 Streifenvorhang mit Staffelpreis',
-		'en' => 'OXID6 Streifenvorhang mit Staffelpreis',
+		'de' => 'Streifenvorhang mit Staffelpreis',
+		'en' => 'Streifenvorhang mit Staffelpreis',
 	),
 	'description' => array(
-		'de' => '<h2>OXID6 Streifenvorhang mit Staffelpreis</h2>',
-		'en' => '<h2>OXID6 Streifenvorhang mit Staffelpreis</h2>',
+		'de' => '<h2>Streifenvorhang mit Staffelpreis</h2>',
+		'en' => '<h2>Streifenvorhang mit Staffelpreis</h2>',
 	),
 	'thumbnail' => 'calc.png',
 	'version' => '1.0.6',
