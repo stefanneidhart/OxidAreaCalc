@@ -153,7 +153,7 @@ var CalcHandler = function (CalcTypes)
 	}
 
 	this.setPrice(newPrice);
-	this.setUnitPrice(newPrice/(breite * hoehe));
+	//this.setUnitPrice(newPrice/(breite * hoehe));
 	
 	alert('calcx');
     }
