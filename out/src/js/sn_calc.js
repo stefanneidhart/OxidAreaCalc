@@ -145,13 +145,13 @@ var CalcHandler = function (CalcTypes)
 	if (this.option2active === true) {
 	    baseprice_staffel = baseprice_staffel + (Number(this.option2));
 	}
-
+alert('calc4');
 	var newPrice = (breite * hoehe) * baseprice_staffel;
 
 	if (this.option1active === true) {
 	    newPrice = newPrice + (Number(this.option1) * breite);
 	}
-
+alert('calc5'+newPrice);
 	this.setPrice(newPrice);
 	//this.setUnitPrice(newPrice/(breite * hoehe));
 	
