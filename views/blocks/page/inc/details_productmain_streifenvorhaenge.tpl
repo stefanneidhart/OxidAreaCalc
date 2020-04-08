@@ -2,7 +2,7 @@
 
 [{if $oDetailsProduct->oxarticles__oxcalctest->value == 1}]
 
-[{oxstyle include=$oViewConf->getModuleUrl("snAreaCalc", "out/src/css/sn_calc.css") }]
+[{oxstyle include=$oViewConf->getModuleUrl("snareacalc", "out/src/css/sn_calc.css") }]
 
 [{assign var="staffeltypen" value=$oDetailsProduct->get_sntypes()}]
 [{assign var="typesjson" value=$oDetailsProduct->get_types_json()}]
@@ -14,7 +14,7 @@
 	var option2 = '[{$oDetailsProduct->getOption2()}]';
 //-->
 </script>
-[{oxscript include=$oViewConf->getModuleUrl("snAreaCalc", "out/src/js/sn_calc.js") }]
+[{oxscript include=$oViewConf->getModuleUrl("snareacalc", "out/src/js/sn_calc.js") }]
 
 <div class="PreisKalkulationContainer">    
     <div class="InputContainer">
