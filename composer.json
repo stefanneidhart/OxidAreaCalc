@@ -1,0 +1,32 @@
+{
+    "name":        "sn/snareacalc",
+    "description": "",
+    "type":        "oxideshop-module",
+    "keywords":    [
+        "oxid",
+        "modules",
+        "eShop",
+        "Editor"
+    ],
+    "authors":     [
+        {
+            "name":  "Stefan Neidhart",
+            "email": "info@stefanneidhart.de"
+        }
+    ],
+    "extra":       {
+        "oxideshop": {
+            "target-directory": "sn/snareacalc"
+        }
+    },
+    "require":     {
+        "php": ">=7.0"
+    },
+    "autoload":    {
+        "psr-4": {
+            "sn\\snareacalc\\": "../../../source/modules/sn/snareacalc"
+        }
+    }
+}
+
+
