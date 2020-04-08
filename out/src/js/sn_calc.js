@@ -27,6 +27,7 @@ var CalcHandler = function (CalcTypes)
 	    myself.setMaxH();
 	    myself.calcArea();
 	    myself.calcPrice();
+	    alert('hb');
 	});
 
 
@@ -124,6 +125,7 @@ var CalcHandler = function (CalcTypes)
 
     this.calcPrice = function ()
     {
+	alert('calc1');
 	var myself = this;
 	var hoehe = this.getHeight();
 	var breite = this.getWidth();
@@ -152,6 +154,8 @@ var CalcHandler = function (CalcTypes)
 
 	this.setPrice(newPrice);
 	this.setUnitPrice(newPrice/(breite * hoehe));
+	
+	alert('calc2');
     }
 
     this.setOption1 = function (option) {
