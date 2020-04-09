@@ -246,7 +246,7 @@
 						[{foreach from=$staffelungen item=staffelitem}]
 						[{assign var="_cnt1" value=$_cnt1+1}]
 						<td>
-							<a href="Javascript:deleteStaffel('[{$staffelitem.staffel}]');" class="delete"></a><span>[{$staffelitem.staffel}] Meter</span>
+							<a href="Javascript:deleteStaffel('[{$staffelitem.staffel}]');" class="delete"></a><span>bis [{$staffelitem.staffel}] Meter</span>
 						</td>
 						[{/foreach}]
 					</tr>
@@ -296,7 +296,7 @@
 				<table>
 					<tr>
 						<td>
-							<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="staffelval[staffelung]" value="Höhe in Meter" onClick="Javascript:document.myedit2.fnc.value = 'add_staffel'"" [{ $readonly }]>
+							<input type="text" class="editinput" size="20" maxlength="[{$edit->oxarticles__oxcalctest->fldmax_length}]" name="staffelval[staffelung]" placeholder="Höhe in Meter" value="" onClick="Javascript:document.myedit2.fnc.value = 'add_staffel'"" [{ $readonly }]>
 						</td>	<td>
 							<input type="submit" class="edittext" name="add_staffel" value="Staffelung hinzufügen" [{ $readonly }]><br>
 						</td>

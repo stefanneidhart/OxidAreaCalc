@@ -27,7 +27,7 @@ var CalcHandler = function (CalcTypes)
 	    myself.setMaxH();
 	    myself.calcArea();
 	    myself.calcPrice();
-	    alert('hb');
+	  
 	});
 
 

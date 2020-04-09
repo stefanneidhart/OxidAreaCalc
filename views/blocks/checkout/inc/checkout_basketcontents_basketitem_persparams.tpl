@@ -1,5 +1,8 @@
 [{assign var=aParams value=$basketitem->getPersParams()}]
 
+[{if $aParams.oxcalctest == '1' }]
+Streifenvorhang
+[{/if}] 
 [{if $aParams.flaeche_aktiv == '1' }]
 
 <p class="persparamBox">
