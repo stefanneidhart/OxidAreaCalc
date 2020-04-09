@@ -41,6 +41,9 @@ class Basket extends Basket_parent {
 		//$areacalc_active = oxConfig::getParameter('areacalc_active');
 		$calcnewflag = false;
 		if (!empty($areacalc_active) && $areacalc_active == '1') {
+		    
+		
+		    
 			$aPersParam['areacalc_active'] = '1';
 			$aPersParam['breite'] = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("breite");
 			$aPersParam['hoehe'] = \OxidEsales\Eshop\Core\Registry::getConfig()->getRequestParameter("hoehe");
@@ -101,6 +104,7 @@ class Basket extends Basket_parent {
 			//inserting new
 			$oBasketItem = oxNew('oxbasketitem');
 			try {
+			    var_dump($aPersParam);
 				$oBasketItem->setStockCheckStatus($this->getStockCheckMode());
 				$oBasketItem->init($sProductID, $dAmount, $aSel, $aPersParam, $blBundle);
 				if ($calcnewflag) {
