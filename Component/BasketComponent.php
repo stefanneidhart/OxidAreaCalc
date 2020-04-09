@@ -6,7 +6,7 @@
 
 namespace sn\snareacalc\Component;
 
-class BasketItem extends BasketComponent_parent
+class BasketComponent extends BasketComponent_parent
 {
 
 
