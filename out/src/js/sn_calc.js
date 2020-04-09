@@ -130,15 +130,22 @@ var CalcHandler = function (CalcTypes)
 	var hoehe = this.getHeight();
 	var breite = this.getWidth();
 	
+	var anzahlStaffeln = myself.currentType['staffeln'].length;
+	
 	var staffelung = myself.currentType['staffeln'][0];
-	alert('calc2');
-	for (var i = 0; i < myself.currentType['staffeln'].length; i++) {
+	alert('calc2 Anzahl Staffeln: '+anzahlStaffeln);
+	for (var i = 0; i < anzahlStaffeln; i++) {
 
 	    var staffel_max_h = this.currentType['staffeln'][i]['staffel'];
 	    if (hoehe > staffel_max_h) {
 		staffelung = myself.currentType['staffeln'][i + 1];
 	    }
 	}
+		alert('Grösste Staffel: '+this.currentType['staffeln'][anzahlStaffeln]['staffel']);
+	if (hoehe > this.currentType['staffeln'][anzahlStaffeln]['staffel']) {
+	    
+	}
+	
 	alert('calc3' + staffelung);
 	var baseprice_staffel = Number(staffelung['preis']);
 
