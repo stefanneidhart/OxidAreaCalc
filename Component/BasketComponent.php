@@ -4,7 +4,7 @@
  * See LICENSE file for license details.
  */
 
-namespace sn\snareacalc\Model;
+namespace sn\snareacalc\Component;
 
 class BasketItem extends BasketComponent_parent
 {
