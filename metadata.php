@@ -22,7 +22,7 @@ $aModule = array(
 		'en' => '<h2>Streifenvorhang mit Staffelpreis</h2>',
 	),
 	'thumbnail' => 'calc.png',
-	'version' => '1.0.7',
+	'version' => '1.0.8',
 	'author' => 'Stefan Neidhart',
 	'url' => 'https://www.stefanneidhart.de',
 	'email' => 'info@stefanneidhart.de',
@@ -31,6 +31,7 @@ $aModule = array(
 		\OxidEsales\Eshop\Application\Model\Basket::class => \sn\snareacalc\Model\Basket::class,
 		\OxidEsales\Eshop\Application\Model\BasketItem::class => \sn\snareacalc\Model\BasketItem::class,
 		\OxidEsales\Eshop\Application\Model\OrderArticle::class => \sn\snareacalc\Model\OrderArticle::class,
+		\OxidEsales\Eshop\Application\Component\BasketComponent::class => \sn\snareacalc\Component\BasketComponent::class,
 	),
 	'controllers' => array(
 		'maincontrollerareacalc' => \sn\snareacalc\Controller\Admin\MainController::class,
