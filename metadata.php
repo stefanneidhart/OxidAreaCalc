@@ -22,7 +22,7 @@ $aModule = array(
 		'en' => '<h2>Streifenvorhang mit Staffelpreis</h2>',
 	),
 	'thumbnail' => 'calc.png',
-	'version' => '1.0.6',
+	'version' => '1.0.7',
 	'author' => 'Stefan Neidhart',
 	'url' => 'https://www.stefanneidhart.de',
 	'email' => 'info@stefanneidhart.de',
