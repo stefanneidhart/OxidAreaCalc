@@ -104,7 +104,7 @@ class Basket extends Basket_parent {
 			//inserting new
 			$oBasketItem = oxNew('oxbasketitem');
 			try {
-			    var_dump($aPersParam);
+			   
 				$oBasketItem->setStockCheckStatus($this->getStockCheckMode());
 				$oBasketItem->init($sProductID, $dAmount, $aSel, $aPersParam, $blBundle);
 				if ($calcnewflag) {
