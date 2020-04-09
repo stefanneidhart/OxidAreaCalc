@@ -3,7 +3,7 @@
 namespace sn\snareacalc\Model;
 
 class Basket extends Basket_parent {
-
+/*
 	public function addToBasket($sProductID, $dAmount, $aSel = null, $aPersParam = null, $blOverride = false, $blBundle = false, $sOldBasketItemId = null) {
 		// enabled ?
 		if (!$this->isEnabled())
@@ -152,7 +152,7 @@ class Basket extends Basket_parent {
 		// returning basket item object
 		return $this->_aBasketContents[$sItemId];
 	}
-
+*/
 	protected function _changeBasketItemKey($sOldKey, $sNewKey, $value = null) {
 		reset($this->_aBasketContents);
 		$iOldKeyPlace = 0;
@@ -169,5 +169,108 @@ class Basket extends Basket_parent {
 			oxSession::setVar($sNewKey, $bitemsdata);
 		}
 	}
+	
+	
+	
+	
+	
+    public function addToBasket($sProductID, $dAmount, $aSel = null, $aPersParam = null, $blOverride = false, $blBundle = false, $sOldBasketItemId = null)
+    {
+        // enabled ?
+        if (!$this->isEnabled()) {
+            return null;
+        }
+
+        // basket exclude
+        if ($this->getConfig()->getConfigParam('blBasketExcludeEnabled')) {
+            if (!$this->canAddProductToBasket($sProductID)) {
+                $this->setCatChangeWarningState(true);
+
+                return null;
+            } else {
+                $this->setCatChangeWarningState(false);
+            }
+        }
+
+        $sItemId = $this->getItemKey($sProductID, $aSel, $aPersParam, $blBundle);
+        if ($sOldBasketItemId && (strcmp($sOldBasketItemId, $sItemId) != 0)) {
+            if (isset($this->_aBasketContents[$sItemId])) {
+                // we are merging, so params will just go to the new key
+                unset($this->_aBasketContents[$sOldBasketItemId]);
+                // do not override stock
+                $blOverride = false;
+            } else {
+                // value is null - means isset will fail and real values will be filled
+                $this->_changeBasketItemKey($sOldBasketItemId, $sItemId);
+            }
+        }
+
+        // after some checks item must be removed from basket
+        $blRemoveItem = false;
+
+        // initialling exception storage
+        $oEx = null;
+
+        if (isset($this->_aBasketContents[$sItemId])) {
+            //updating existing
+            try {
+                // setting stock check status
+                $this->_aBasketContents[$sItemId]->setStockCheckStatus($this->getStockCheckMode());
+                //validate amount
+                //possibly throws exception
+                $this->_aBasketContents[$sItemId]->setAmount($dAmount, $blOverride, $sItemId);
+            } catch (\OxidEsales\Eshop\Core\Exception\OutOfStockException $oEx) {
+                // rethrow later
+            }
+        } else {
+            //inserting new
+            $oBasketItem = oxNew(\OxidEsales\Eshop\Application\Model\BasketItem::class);
+            try {
+                $oBasketItem->setStockCheckStatus($this->getStockCheckMode());
+                $oBasketItem->init($sProductID, $dAmount, $aSel, $aPersParam, $blBundle);
+            } catch (\OxidEsales\Eshop\Core\Exception\NoArticleException $oEx) {
+                // in this case that the article does not exist remove the item from the basket by setting its amount to 0
+                //$oBasketItem->dAmount = 0;
+                $blRemoveItem = true;
+            } catch (\OxidEsales\Eshop\Core\Exception\OutOfStockException $oEx) {
+                // rethrow later
+            } catch (\OxidEsales\Eshop\Core\Exception\ArticleInputException $oEx) {
+                // rethrow later
+                $blRemoveItem = true;
+            }
+
+            $this->_aBasketContents[$sItemId] = $oBasketItem;
+        }
+
+        //in case amount is 0 removing item
+        if ($this->_aBasketContents[$sItemId]->getAmount() == 0 || $blRemoveItem) {
+            $this->removeItem($sItemId);
+        } elseif ($blBundle) {
+            //marking bundles
+            $this->_aBasketContents[$sItemId]->setBundle(true);
+        }
+
+        //calling update method
+        $this->onUpdate();
+
+        if ($oEx) {
+            throw $oEx;
+        }
+
+        // notifying that new basket item was added
+        if (!$blBundle) {
+            $this->_addedNewItem($sProductID, $dAmount, $aSel, $aPersParam, $blOverride, $blBundle, $sOldBasketItemId);
+        }
+
+        // returning basket item object
+        if ($this->_aBasketContents[$sItemId] instanceof \OxidEsales\Eshop\Application\Model\BasketItem) {
+            $this->_aBasketContents[$sItemId]->setBasketItemKey($sItemId);
+        }
+        return $this->_aBasketContents[$sItemId];
+    }
+	
+	
+	
+	
 
 }
