@@ -1,9 +1,15 @@
 [{assign var=aParams value=$basketitem->getPersParams()}]
 
-[{if $aParams.oxcalctest == '1' }]
-Streifenvorhang
-[{/if}] 
-[{if $aParams.flaeche_aktiv == '1' }]
+[{if $aParams.areacalc_active == '1' }]
+    <p class="persparamBox">
+		[{assign var=aMaterial value=$basketitem->getMaterial($aParams.MaterialTypesSelect)}]
+		<strong>Material: </strong> [{$aMaterial.title}]<br />
+		<strong>Breite: </strong> [{$aParams.breite}]<br />
+		<strong>Höhe: </strong> [{$aParams.hoehe}]
+		[{if $aParams.areacalc_opt1 == '1' }]<br /><strong>Edelstahlprofilschine:</strong> ja[{/if}]
+		[{if $aParams.areacalc_opt2 == '1' }]<br /><strong>S - vor Sturz:</strong> ja[{/if}]
+    </p>
+[{elseif $aParams.flaeche_aktiv == '1' }]
 
 <p class="persparamBox">
     <strong>Breite: </strong> [{$aParams.breite}] m<br />
