@@ -75,7 +75,7 @@
 
 	<table>
 		<tr>
-			<td>Flächenberechnung aktivieren: </td>
+			<td>Steifenvorhang aktivieren: </td>
 			<td>   
 				<input class="edittext" onClick="Javascript:document.myedit.submit()" type="checkbox" name="editval[oxarticles__oxcalctest]" value='1' [{if $edit->oxarticles__oxcalctest->value == 1}]checked[{/if}] [{ $readonly }]>
 			</td>
