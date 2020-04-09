@@ -1,5 +1,6 @@
 [{assign var=aParams value=$basketitem->getPersParams()}]
-
+xx
+[{$aParams|var_dump}]
 [{if $aParams.areacalc_active == '1' }]
     <p class="persparamBox">
 		[{assign var=aMaterial value=$basketitem->getMaterial($aParams.MaterialTypesSelect)}]
