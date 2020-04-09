@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS areacalc_typen_staffel (
 OXID varchar(100)  NOT NULL,
   areacalcstaffelid varchar(100)  NOT NULL,
   areacalctypeid varchar(100)  NOT NULL,
-  staffel varchar(100)  NOT NULL,
+  staffel float  NOT NULL,
   preis varchar(100)  NOT NULL,
   oxidarticleid varchar(100)  NOT NULL,
   PRIMARY KEY (OXID)
