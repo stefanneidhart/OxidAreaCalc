@@ -246,7 +246,7 @@
 						[{foreach from=$staffelungen item=staffelitem}]
 						[{assign var="_cnt1" value=$_cnt1+1}]
 						<td>
-							<a href="Javascript:deleteStaffel('[{$staffelitem.staffel}]');" class="delete"></a><span>bis [{$staffelitem.staffel}] Meter</span>
+							<a href="Javascript:deleteStaffel('[{$staffelitem.staffel}]');" class="delete"></a><span>bis [{$staffelitem.staffel}] Meter </span>
 						</td>
 						[{/foreach}]
 					</tr>
