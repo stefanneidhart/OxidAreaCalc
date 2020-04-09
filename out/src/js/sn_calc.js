@@ -139,7 +139,7 @@ var CalcHandler = function (CalcTypes)
 		staffelung = myself.currentType['staffeln'][i + 1];
 	    }
 	}
-	alert('calc3');
+	alert('calc3' + staffelung);
 	var baseprice_staffel = Number(staffelung['preis']);
 
 	if (this.option2active === true) {
