@@ -133,20 +133,21 @@ var CalcHandler = function (CalcTypes)
 	var anzahlStaffeln = myself.currentType['staffeln'].length;
 	
 	var staffelung = myself.currentType['staffeln'][0];
-	alert('calc2 Anzahl Staffeln: '+anzahlStaffeln);
+	alert('calc2 Anzahl Staffeln: ' + anzahlStaffeln);
 	for (var i = 0; i < anzahlStaffeln; i++) {
-
 	    var staffel_max_h = this.currentType['staffeln'][i]['staffel'];
 	    if (hoehe > staffel_max_h) {
-		staffelung = myself.currentType['staffeln'][i + 1];
+		if (i + 1 >= anzahlStaffeln ) {
+		    staffelung = myself.currentType['staffeln'][i];
+		} else {
+		    staffelung = myself.currentType['staffeln'][i + 1];
+		}
 	    }
 	}
-		alert('Grösste Staffel: '+this.currentType['staffeln'][anzahlStaffeln]['staffel']);
-	if (hoehe > this.currentType['staffeln'][anzahlStaffeln]['staffel']) {
-	    
-	}
 	
-	alert('calc3' + staffelung);
+	alert('Grösste Staffel: ' + this.currentType['staffeln'][anzahlStaffeln-1]['staffel']);
+	
+	alert('calc3');
 	var baseprice_staffel = Number(staffelung['preis']);
 
 	if (this.option2active === true) {
