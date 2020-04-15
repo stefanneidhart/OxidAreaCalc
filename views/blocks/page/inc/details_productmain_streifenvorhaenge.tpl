@@ -20,7 +20,7 @@
     <div class="InputContainer">
 		<div class="itemrow MaterialTypContainer">
 			<label>Material:</label>
-			<select class="MaterialTypesSelect" id="MaterialTypesSelect" name="MaterialTypesSelect">
+			<select class="MaterialTypesSelect" id="MaterialTypesSelect" name="persparam[MaterialTypesSelect]">
 				[{foreach from=$staffeltypen item=oMaterialTypen key=iKey}]
 
 				<option value="[{$oMaterialTypen.OXID}]">[{$oMaterialTypen.title}] - [{$oMaterialTypen.title2}]  </option>
@@ -30,32 +30,32 @@
 		</div>
 		<div class="itemrow HoeheContainer">
 			<label>Höhe:</label>
-			<input id="hoehe" type="text" name="hoehe" value="1" size="3" autocomplete="off" class="textbox">
+			<input id="hoehe" type="text" name="persparam[hoehe]" value="1" size="3" autocomplete="off" class="textbox">
 		</div>	
 		<div class="itemrow BreiteContainer">
 			<label>Breite:</label>
-			<input id="breite" type="text" name="breite" value="1" size="3" autocomplete="off" class="textbox">
-			<input id="areacalc_active" name="areacalc_active" value="1" autocomplete="off" type="hidden">
+			<input id="breite" type="text" name="persparam[breite]" value="1" size="3" autocomplete="off" class="textbox">
+			<input id="areacalc_active" name="persparam[areacalc_active]" value="1" autocomplete="off" type="hidden">
 		</div>		
     </div>
     <div class="ResultContainer">
 		<div class="itemrow AreaContainer">
 			<label>Fläche:</label>
 			<div id="AreaResult" class="AreaResult"></div>
-			<input id="flaeche" type="hidden" name="flaeche" value="1" size="3" autocomplete="off" class="textbox">
+			<input id="flaeche" type="hidden" name="persparam[flaeche]" value="1" size="3" autocomplete="off" class="textbox">
 		</div>
 
 		<div class="itemrow WeightContainer">
 		[{*<label>Gewicht:</label>
 			<div class="WeightResult"></div>*}]
-			<input id="CalcWeight" type="hidden" name="CalcWeight" value="1" size="3" autocomplete="off" class="textbox">
+			<input id="CalcWeight" type="hidden" name="persparam[CalcWeight]" value="1" size="3" autocomplete="off" class="textbox">
 		</div>
 		
 		[{if $oDetailsProduct->getOption1() > 0}]
 		<div class="itemrow StahlschieneContainer">
 			<label>Edelstahlprofilschine:</label>
 			<div class="WeightResult"></div>
-			<input class="edittext" type="checkbox" id="areacalc_opt1" name="areacalc_opt1" value='1' [{if $oDetailsProduct->oxarticles__areacalc_opt1->value == 1}]checked[{/if}] [{ $readonly }]>
+			<input class="edittext" type="checkbox" id="areacalc_opt1" name="persparam[areacalc_opt1]" value='1' [{if $oDetailsProduct->oxarticles__areacalc_opt1->value == 1}]checked[{/if}] [{ $readonly }]>
 		</div>
 		[{/if}]
 		
@@ -63,7 +63,7 @@
 		<div class="itemrow VorSturtzContainer">
 			<label>S - vor Sturz</label>
 			<div class="WeightResult"></div>
-			<input class="edittext" type="checkbox" id="areacalc_opt2" name="areacalc_opt2" value='1' [{if $oDetailsProduct->oxarticles__areacalc_opt2->value == 1}]checked[{/if}] [{ $readonly }]>
+			<input class="edittext" type="checkbox" id="areacalc_opt2" name="persparam[areacalc_opt2]" value='1' [{if $oDetailsProduct->oxarticles__areacalc_opt2->value == 1}]checked[{/if}] [{ $readonly }]>
 		</div>		
 		[{/if}]
 
